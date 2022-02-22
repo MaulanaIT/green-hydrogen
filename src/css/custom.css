@@ -1,0 +1,508 @@
+:root {
+    --primary-color: #6EC624;
+    --secondary-color: #2DA82B;
+}
+
+::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+}
+
+[list]::-webkit-calendar-picker-indicator {
+    display: none !important;
+}
+
+/* Customize website's scrollbar like Mac OS
+Not supports in Firefox and IE */
+
+/* total width */
+::-webkit-scrollbar {
+    background-color: #fff;
+    width: 6px
+}
+
+/* background of the scrollbar except button or resizer */
+::-webkit-scrollbar-track {
+    background-color: #fff
+}
+
+::-webkit-scrollbar-track:hover {
+    background-color: #f4f4f4
+}
+
+/* scrollbar itself */
+::-webkit-scrollbar-thumb {
+    background-color: var(--primary-color);
+    border-radius: 16px;
+    border: 0px solid #fff
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: var(--secondary-color);
+    border: 4px solid var(--secondary-color)
+}
+
+/* set button(top and bottom of the scrollbar) */
+::-webkit-scrollbar-button {
+    display: none
+}
+
+.gradient-background-color {
+    background-color: linear-gradient(45deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+}
+
+.navy-background-color {
+    background-color: #020447 !important;
+}
+
+.primary-background-color {
+    background-color: var(--primary-color) !important;
+}
+
+.secondary-background-color {
+    background-color: var(--secondary-color) !important;
+}
+
+.navy-color {
+    color: #020447 !important;
+}
+
+.primary-color {
+    color: var(--primary-color) !important;
+}
+
+.secondary-color {
+    color: var(--secondary-color) !important;
+}
+
+/* ------------------------------------------------ */
+
+.banner-container {
+    align-items: center;
+    border-bottom: 1px solid white;
+    border-top: 1px solid white;
+    display: flex;
+    flex-wrap: wrap;
+    min-height: 100vh;
+    position: relative;
+}
+
+.company-card-join-us {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0px 0px 10px 6px #dddddd;
+    padding: 80px;
+    width: 100%;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.green-overview-banner-1 {
+    height: 100vh;
+    position: relative;
+}
+
+.green-overview-banner-1::before {
+    background: url(../assets/green-hydrogen-overview/background-banner-1.png) no-repeat;
+    background-size: cover;
+    background-position: center;
+    content: '';
+    height: 100%;
+	left: 0;
+	position: absolute;
+	top: 0;
+    width: 100%;
+}
+
+.home-banner-1 {
+    background: #99FFFF;
+}
+
+.home-banner-2 {
+    background: url(../assets/home/banner-2.png) no-repeat;
+    background-size: cover;
+}
+
+.home-latest-news-background {
+    background: #EFF4F8;
+}
+
+.home-latest-news-background::before {
+    content: 'Latest News';
+    font-size: 8rem;
+    font-weight: bold;
+    left: 50%;
+    opacity: 0.05;
+    position: absolute;
+    top: 90px;
+    transform: translate(-50%, 0%);
+    white-space: nowrap;
+}
+
+.home-latest-publication-background {
+    background: #EFF4F8;
+}
+
+.home-latest-publication-background::before {
+    content: 'Latest Publication';
+    font-size: 8rem;
+    font-weight: bold;
+    left: 50%;
+    opacity: 0.05;
+    position: absolute;
+    top: 90px;
+    transform: translate(-50%, 0%);
+    white-space: nowrap;
+}
+
+.icon-input-field-filter {
+    align-items: center;
+    color: white;
+    display: flex;
+    height: 100%;
+    left: 8px;
+    position: absolute;
+    top: 0;
+}
+
+.icon-input-field-join-us {
+    align-items: center;
+    color: #65C1BE;
+    display: flex;
+    height: 100%;
+    left: 8px;
+    position: absolute;
+    top: 0;
+}
+
+.input-field-filter {
+    background: #84a866;
+    border-radius: 12px;
+    padding: 4px 12px 4px 26px;
+    width: 100%;
+}
+
+.input-field-join-us {
+    border: 2px solid #65C1BE;
+    border-radius: 12px;
+    padding: 4px 12px 4px 24px;
+    width: 100%;
+}
+
+.max-vh-100 {
+    max-height: 100vh;
+}
+
+.max-vw-100 {
+    max-width: 100vw;
+}
+
+.navbar-logo {
+    height: 50px;
+}
+
+.row-y {
+    --bs-gutter-y: 1.5rem !important;
+}
+
+.publication-card {
+    border: 1px solid var(--primary-color);
+    border-radius: 12px;
+    padding: 12px;
+}
+
+.publication-container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+.text-size-lg-1 {
+    font-size: 12px;
+}
+
+.text-size-lg-2 {
+    font-size: 14px;
+}
+
+.text-size-lg-3 {
+    font-size: 16px;
+}
+
+.text-size-lg-4 {
+    font-size: 18px;
+
+}
+
+.text-size-lg-5 {
+    font-size: 20px;
+}
+
+.text-size-lg-6 {
+    font-size: 22px;
+}
+
+.text-size-lg-7 {
+    font-size: 24px;
+}
+
+.text-size-lg-8 {
+    font-size: 26px;
+}
+
+.text-size-lg-9 {
+    font-size: 28px;
+}
+
+.text-size-lg-10 {
+    font-size: 30px;
+}
+
+.text-size-lg-11 {
+    font-size: 32px;
+    line-height: 32px;
+}
+
+.text-size-lg-12 {
+    font-size: 34px;
+    line-height: 34px;
+}
+
+.text-size-lg-13 {
+    font-size: 36px;
+    line-height: 36px;
+}
+
+.text-size-lg-14 {
+    font-size: 38px;
+    line-height: 38px;
+}
+
+.text-size-lg-15 {
+    font-size: 40px;
+    line-height: 40px;
+}
+
+.text-size-lg-16 {
+    font-size: 42px;
+    line-height: 42px;
+}
+
+.text-size-lg-17 {
+    font-size: 44px;
+    line-height: 44px;
+}
+
+.text-size-lg-18 {
+    font-size: 46px;
+    line-height: 46px;
+}
+
+.text-size-lg-19 {
+    font-size: 48px;
+    line-height: 48px;
+}
+
+.text-size-lg-20 {
+    font-size: 50px;
+    line-height: 50px;
+}
+
+.text-size-lg-21 {
+    font-size: 52px;
+    line-height: 52px;
+}
+
+.text-size-lg-22 {
+    font-size: 54px;
+    line-height: 54px;
+}
+
+.text-size-lg-23 {
+    font-size: 56px;
+    line-height: 56px;
+}
+
+.text-size-lg-24 {
+    font-size: 58px;
+    line-height: 58px;
+}
+
+.text-size-lg-25 {
+    font-size: 60px;
+    line-height: 60px;
+}
+
+.text-size-lg-26 {
+    font-size: 62px;
+    line-height: 62px;
+}
+
+.text-size-lg-27 {
+    font-size: 64px;
+    line-height: 64px;
+}
+
+.text-size-lg-28 {
+    font-size: 66px;
+    line-height: 66px;
+}
+
+.text-size-lg-29 {
+    font-size: 68px;
+    line-height: 68px;
+}
+
+.text-size-lg-30 {
+    font-size: 70px;
+    line-height: 70px;
+}
+
+@media only screen and (max-width: 991px) {
+
+    .company-card-join-us {
+        padding: 20px;
+    }
+
+    .text-size-1 {
+        font-size: 12px;
+    }
+    
+    .text-size-2 {
+        font-size: 14px;
+    }
+    
+    .text-size-3 {
+        font-size: 16px;
+    }
+    
+    .text-size-4 {
+        font-size: 18px;
+    
+    }
+    
+    .text-size-5 {
+        font-size: 20px;
+    }
+    
+    .text-size-6 {
+        font-size: 22px;
+    }
+    
+    .text-size-7 {
+        font-size: 24px;
+    }
+    
+    .text-size-8 {
+        font-size: 26px;
+    }
+    
+    .text-size-9 {
+        font-size: 28px;
+    }
+    
+    .text-size-10 {
+        font-size: 30px;
+    }
+
+    .text-size-11 {
+        font-size: 32px;
+        line-height: 32px;
+    }
+    
+    .text-size-12 {
+        font-size: 34px;
+        line-height: 34px;
+    }
+    
+    .text-size-13 {
+        font-size: 36px;
+        line-height: 36px;
+    }
+    
+    .text-size-14 {
+        font-size: 38px;
+        line-height: 38px;
+    }
+    
+    .text-size-15 {
+        font-size: 40px;
+        line-height: 40px;
+    }
+    
+    .text-size-16 {
+        font-size: 42px;
+        line-height: 42px;
+    }
+    
+    .text-size-17 {
+        font-size: 44px;
+        line-height: 44px;
+    }
+    
+    .text-size-18 {
+        font-size: 46px;
+        line-height: 46px;
+    }
+    
+    .text-size-19 {
+        font-size: 48px;
+        line-height: 48px;
+    }
+    
+    .text-size-20 {
+        font-size: 50px;
+        line-height: 50px;
+    }
+
+    .text-size-21 {
+        font-size: 52px;
+        line-height: 52px;
+    }
+    
+    .text-size-22 {
+        font-size: 54px;
+        line-height: 54px;
+    }
+    
+    .text-size-23 {
+        font-size: 56px;
+        line-height: 56px;
+    }
+    
+    .text-size-24 {
+        font-size: 58px;
+        line-height: 58px;
+    }
+    
+    .text-size-25 {
+        font-size: 60px;
+        line-height: 60px;
+    }
+    
+    .text-size-26 {
+        font-size: 62px;
+        line-height: 62px;
+    }
+    
+    .text-size-27 {
+        font-size: 64px;
+        line-height: 64px;
+    }
+    
+    .text-size-28 {
+        font-size: 66px;
+        line-height: 66px;
+    }
+    
+    .text-size-29 {
+        font-size: 68px;
+        line-height: 68px;
+    }
+    
+    .text-size-30 {
+        font-size: 70px;
+        line-height: 70px;
+    }
+}
