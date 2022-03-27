@@ -1,0 +1,111 @@
+@import url('./custom.css');
+
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.bottom-container {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start;
+    gap: 20px;
+}
+
+.bottom-container>.button {
+    border: 3px solid var(--primary-color);
+    border-radius: 24px;
+    color: black;
+    cursor: pointer;
+    padding: 4px 16px;
+}
+
+.bottom-container>.button:hover {
+    background: var(--primary-color);
+    color: white;
+}
+
+.top-container {
+    border: 3px solid var(--primary-color);
+}
+
+.top-container>ul>li:not(:last-child) {
+    border-bottom: 3px solid var(--primary-color);
+    list-style: none;
+}
+
+.top-container>ul>li {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.top-container>ul>li>a, .top-container>ul>li>div {
+    color: black;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 14px 20px;
+    position: relative;
+    text-decoration: none;
+    width: 100%;
+}
+
+.top-container>ul>li>a:hover, .top-container>ul>li>div:hover,
+.top-container>ul>li.dropdown.active>a, .top-container>ul>li.dropdown.active>div,
+.top-container>ul>li.dropdown>ul.dropdown-menu>li>a:hover, .top-container>ul>li.dropdown>ul.dropdown-menu>li>div:hover, ul>li>a.active {
+    background: var(--primary-color);
+    color: white !important;
+}
+
+/* .top-container > ul > li > a:hover, .top-container > ul > li > div:hover {
+    color: black;
+    font-weight: bold;
+} */
+
+.top-container>ul>li.dropdown>a>i, .top-container>ul>li.dropdown>div>i {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translate(0%, -50%);
+    transition: transform 0.4s;
+}
+
+.top-container>ul>li.dropdown.active>a>i, .top-container>ul>li.dropdown.active>div>i {
+    transform: translate(0%, -50%) rotate(540deg);
+}
+
+.top-container>ul>li.dropdown>ul.dropdown-menu {
+    display: none;
+    width: 100%;
+}
+
+.top-container>ul>li.dropdown.active>ul.dropdown-menu {
+    display: block;
+}
+
+.top-container>ul>li.dropdown>ul.dropdown-menu>li {
+    align-items: center;
+    border-top: 3px solid var(--primary-color);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.top-container>ul>li.dropdown>ul.dropdown-menu>li>a, .top-container>ul>li.dropdown>ul.dropdown-menu>li>div {
+    color: black;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 14px 36px;
+    position: relative;
+    text-decoration: none;
+    width: 100%;
+}
+
+@media only screen and (max-width: 1023px) {
+    .container {
+        display: none;
+    }
+}

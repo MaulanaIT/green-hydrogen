@@ -84,6 +84,7 @@ Last Change:    5/3/2019
 ***/
 
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900,900i');
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@500;600;700;800');
 
 /*
 font-family: 'Roboto', sans-serif;
@@ -116,6 +117,7 @@ font-family: 'Roboto', sans-serif;
  ***/
 
 * {
+	font-family: 'Dosis';
 	margin: 0px;
 	padding: 0px;
 	border: none;
@@ -138,13 +140,13 @@ body {
 	background: #ffffff;
 	-webkit-font-smoothing: antialiased;
 	-moz-font-smoothing: antialiased;
-	font-family: 'Roboto', sans-serif;
 }
 
 a {
 	text-decoration: none;
 	cursor: pointer;
 	color: #6EC624;
+	font-size: 18px;
 }
 
 button,
@@ -159,7 +161,6 @@ h1, h2, h3, h4, h5, h6 {
 	margin: 0px;
 	background: none;
 	line-height: 1.6em;
-	font-family: 'Roboto', sans-serif !important;
 }
 
 input, button, select, textarea {}
@@ -168,13 +169,21 @@ textarea {
 	overflow: hidden;
 }
 
-p {
+p, button {
 	color: white;
 	position: relative;
+	font-size: 18px;
 	font-weight: normal;
 	margin: 0px;
 	background: none;
-	font-family: 'Roboto', sans-serif !important;
+}
+
+li {
+	position: relative;
+	font-size: 18px;
+	font-weight: normal;
+	margin: 0px;
+	background: none;
 }
 
 .auto-container {
@@ -183,7 +192,11 @@ p {
 	margin: 0 auto;
 }
 
-@media only screen and (max-width: 1365px) {
+@media only screen and (max-width: 1279px) {
+	p, a, li {
+		font-size: 16px;
+	}
+
 	.auto-container {
 		padding: 0px 30px;
 	}
@@ -669,16 +682,17 @@ ul, li {
 }
 
 .social-icon-one li a {
+	align-items: center;
+	border: 1px solid white;
 	border-radius: 50%;
 	position: relative;
-	display: block;
-	height: 50px;
-	width: 50px;
-	line-height: 50px;
+	display: flex;
+	height: 40px;
+	width: 40px;
 	text-align: center;
+	justify-content: center;
 	font-size: 14px;
-	color: #a9b1bf;
-	background-color: #373851;
+	color: white;
 	-webkit-transition: all 300ms ease;
 	-moz-transition: all 300ms ease;
 	-ms-transition: all 300ms ease;
@@ -1186,7 +1200,6 @@ ul, li {
 .main-header {
 	position: fixed;
 	z-index: 999;
-	width: 100%;
 	-webkit-transition: all 300ms ease;
 	-moz-transition: all 300ms ease;
 	-ms-transition: all 300ms ease;
@@ -1196,12 +1209,11 @@ ul, li {
 
 .main-header .main-box {
 	position: relative;
-	padding: 25px 0;
 	-webkit-transition: all 300ms ease;
 	-moz-transition: all 300ms ease;
 	-ms-transition: all 300ms ease;
 	-o-transition: all 300ms ease;
-	transition: all 300ms ease-;
+	transition: all 300ms ease;
 }
 
 .main-header .logo-box {
@@ -1229,7 +1241,6 @@ ul, li {
 	align-items: center;
 	display: flex;
 	position: relative;
-	float: right;
 	-webkit-transition: all 600ms ease;
 	-moz-transition: all 600ms ease;
 	-ms-transition: all 600ms ease;
@@ -1240,9 +1251,12 @@ ul, li {
 .main-header .nav-outer .main-menu {
 	position: static;
 	float: left;
+	width: 100%;
 }
 
 .main-menu .navigation {
+	align-items: center;
+	display: flex;
 	position: static;
 	margin: 0px;
 }
@@ -1250,7 +1264,7 @@ ul, li {
 .main-menu .navigation>li {
 	position: relative;
 	float: left;
-	margin-left: 45px;
+	margin-left: 30px;
 	-webkit-transition: all 300ms ease;
 	-moz-transition: all 300ms ease;
 	-ms-transition: all 300ms ease;
@@ -1259,9 +1273,11 @@ ul, li {
 }
 
 .main-menu .navigation>li>a, .main-menu .navigation>li>p {
+	align-items: center;
 	position: relative;
-	display: block;
-	font-size: 14px;
+	cursor: pointer;
+	display: flex;
+	font-size: 16px;
 	line-height: 30px;
 	font-weight: 500;
 	padding: 10px 0;
@@ -1285,7 +1301,7 @@ ul, li {
 	width: 10px;
 	display: block;
 	line-height: 24px;
-	font-size: 14px;
+	font-size: 16px;
 	font-weight: 900;
 	text-align: center;
 	transform: rotate(90deg) translate(0%, -28%);
@@ -1347,8 +1363,10 @@ ul, li {
 }
 
 .main-menu .navigation>li>ul>li>a, .main-menu .navigation>li>ul>li>p {
+	align-items: center;
 	position: relative;
-	display: block;
+	cursor: pointer;
+	display: flex;
 	padding: 8px 0px;
 	line-height: 24px;
 	font-weight: 500;
@@ -1426,8 +1444,10 @@ ul, li {
 }
 
 .main-menu .navigation>li>ul>li>ul>li>a, .main-menu .navigation>li>ul>li>ul>li>p {
+	align-items: center;
 	position: relative;
-	display: block;
+	cursor: pointer;
+	display: flex;
 	padding: 8px 0px;
 	line-height: 24px;
 	font-weight: 500;
@@ -1679,9 +1699,21 @@ ul, li {
 
 ***/
 
+.main-header {
+	background: transparent;
+	padding: 20px 0px;
+}
+
+.main-header.fixed-header {
+	background: #020447;
+	padding: 10px 0px;
+}
+
 .main-header.fixed-header .main-box {
-	padding: 10px 0;
-	background-color: #1e1f36;
+	align-items: center;
+	display: flex;
+	height: auto;
+	transition: 0.3s;
 }
 
 .header-style-two.fixed-header .main-box {
@@ -1850,8 +1882,9 @@ ul, li {
 }
 
 .mobile-menu .navigation li>a, .mobile-menu .navigation li>p {
+	align-items: center;
 	position: relative;
-	display: block;
+	display: flex;
 	line-height: 24px;
 	padding: 10px 20px;
 	font-size: 15px;
@@ -3068,7 +3101,7 @@ ul, li {
 
 .about-section {
 	position: relative;
-	padding: 120px 0 70px;
+	padding: 40px 0px;
 	background-color: #fbfbfd;
 }
 
@@ -3165,7 +3198,7 @@ ul, li {
 
 .about-section .content-column .sec-title {
 	position: relative;
-	margin-bottom: 43px;
+	margin-bottom: 20px;
 }
 
 .about-section .content-column .sec-title h2 {
@@ -3787,11 +3820,22 @@ ul, li {
 }
 
 .fluid-section-one {
-	height: 100vh;
+	height: 800px;
 	position: relative;
 	background: url('../assets/home/banner-background.png') no-repeat;
 	background-size: cover;
 	background-position: center;
+}
+
+.fluid-section-one::before {
+	background: black;
+	content: '';
+	height: 100%;
+	left: 0;
+	position: absolute;
+	top: 0;
+	width: 100%;
+	z-index: -1;
 }
 
 /* .fluid-section-one:before {
@@ -3816,7 +3860,7 @@ ul, li {
 	max-width: 1200px;
 	margin: auto;
 	position: relative;
-	padding: 0px 120px;
+	padding: 0px;
 }
 
 .fluid-section-one .content-column {
@@ -3831,8 +3875,8 @@ ul, li {
 	display: flex;
 	flex-direction: row;
 	height: 100%;
+	justify-content: center;
 	position: relative;
-	max-width: 600px;
 	/* margin: 120px 0; */
 	/* padding-left: 100px; */
 }
@@ -3848,7 +3892,7 @@ ul, li {
 }
 
 .fluid-section-two {
-	height: 50vh;
+	height: 300px;
 	position: relative;
 }
 
@@ -9277,7 +9321,7 @@ ul, li {
 
 .main-footer .widgets-section {
 	position: relative;
-	padding: 115px 0px 40px;
+	padding: 115px 20px 0px 20px;
 }
 
 .main-footer .footer-column {
@@ -9416,7 +9460,7 @@ ul, li {
 	color: black;
 	font-weight: 600;
 	border-top: 1px solid rgba(255, 255, 255, .20);
-	padding: 12px 0px;
+	padding: 20px 0px;
 }
 
 .main-footer .copyright-text a {

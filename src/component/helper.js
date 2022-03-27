@@ -1,14 +1,8 @@
-import { useEffect } from 'react';
+import i18next from "i18next";
+import { useTranslation } from "react-i18next";
 
-export default function ImportScript (resourceUrl) {
-    useEffect(() => {
-        const script = document.createElement('script');
-        script.type = " text/babel";
-        script.src = resourceUrl;
-        script.async = true;
-        document.body.appendChild(script);
-        return () => {
-            document.body.removeChild(script);
-        }
-    }, [resourceUrl]);
-};
+export const Translate = (props) => {
+    const {t, i18n} = useTranslation();
+
+    return i18next.t(props.title);
+}

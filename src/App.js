@@ -1,18 +1,18 @@
-import React, { useEffect } from 'react';
-import { Link, Navigate, Route, Routes, useLocation } from 'react-router-dom';
-import { BsGlobe } from 'react-icons/bs';
-import { FaLongArrowAltRight, FaMapMarkerAlt, FaPhone, FaRegEnvelope } from 'react-icons/fa';
-import ImportScript from './component/helper';
+import React, { Component } from 'react';
+import { Link, Navigate, Route, Routes } from 'react-router-dom';
+import { FaLongArrowAltRight, FaMapMarkerAlt, FaPhone, FaRegEnvelope, FaSearch } from 'react-icons/fa';
+import FlagIcon from './js/flag-icon';
+import i18next from 'i18next';
 
 import Activities from './pages/Activities';
 import CompanyDirectories from './pages/CompanyDirectories';
 import ContuctUs from './pages/ContuctUs';
 import Event from './pages/Event';
-import GreenHydrogenIndonesia from './pages/GreenHydrogenIndonesia';
+// import GreenHydrogenIndonesia from './pages/GreenHydrogenIndonesia';
 import GreenHydrogenIndonesiaDevelopmentProgress from './pages/GreenHydrogenIndonesiaDevelopmentProgress';
 import GreenHydrogenIndonesiaInitiationAction from './pages/GreenHydrogenIndonesiaInitiationAction';
 import GreenHydrogenIndonesiaLegalFramework from './pages/GreenHydrogenIndonesiaLegalFramework';
-import GreenHydrogenIndonesiaOverview from './pages/GreenHydrogenIndonesiaOverview';
+import GreenHydrogenIndonesiaOverview from './pages/GreenHydrogenIndonesia';
 import GreenHydrogenIndonesiaPotential from './pages/GreenHydrogenIndonesiaPotential';
 import GreenHydrogenIndonesiaStakeholderMapping from './pages/GreenHydrogenIndonesiaStakeholderMapping';
 import GreenHydrogenOverview from './pages/GreenHydrogenOverview';
@@ -46,32 +46,25 @@ import 'jquery-knob/knob.jquery.json';
 import 'moment/moment';
 import './js/script';
 
+import './i18n';
+
 import $ from 'jquery';
 import WOW from 'wowjs';
+import { Translate } from './component/helper';
 
-export default function App() {
+export class App extends Component {
 
-    const location = useLocation();
+    state = {
+        HTMLHeaderPage: []
+    }
 
-    useEffect(() => {
-        //Submenu Dropdown Toggle
-        if ($('.main-header li.dropdown ul').length) {
-            $('.main-header .navigation li.dropdown').append('<div class="dropdown-btn"><span class="fa fa-angle-down"></span></div>');
-        }
-
-        //Mobile Nav Hide Show
-        var mobileMenuContent = $('.main-header .nav-outer .main-menu .navigation').html();
-        $('.mobile-menu').append('<div class="close-btn"><span class="icon flaticon-cancel-music"></span></div>');
-        $('.mobile-menu .navigation').append(mobileMenuContent);
-        $('.sticky-header .navigation').append(mobileMenuContent);
-        $('.mobile-menu .close-btn').on('click', function () {
-            $('body').removeClass('mobile-menu-visible');
-        });
+    componentDidMount() {
         //Dropdown Button
         $('.mobile-menu li.dropdown .dropdown-btn').on('click', function () {
             $(this).prev('ul').slideToggle(500);
             this.style = `transform: rotate(${(this.style.transform === 'rotate(540deg)') ? 0 : 540}deg)`;
         });
+
         //Menu Toggle Btn
         $('.mobile-nav-toggler').on('click', function () {
             $('body').addClass('mobile-menu-visible');
@@ -79,6 +72,9 @@ export default function App() {
 
         //Menu Toggle Btn
         $('.mobile-menu .menu-backdrop,.mobile-menu .close-btn').on('click', function () {
+            $('body').removeClass('mobile-menu-visible');
+        });
+        $('ul li a').on('click', function () {
             $('body').removeClass('mobile-menu-visible');
         });
 
@@ -106,26 +102,32 @@ export default function App() {
                 scrollLink.fadeOut(300);
             }
         });
-    }, []);
 
-    useEffect(() => {
         let wow = new WOW.WOW({
             live: false
         });
         wow.init();
-        
-    }, []);
+    }
 
-    return (
-        <div className="page-wrapper">
+    ScrollToTop = () => {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
 
-            {/*  Preloader  */}
-            <div className="preloader"></div>
+    SwitchLanguage = (code) => {
+        i18next.changeLanguage(code.toLowerCase());
+    }
 
-            {/*  Main Header */}
-            <header className="main-header">
-                <div className="main-box">
-                    <div className="auto-container clearfix">
+    render() {
+        return (
+            <div className="page-wrapper position-relative">
+
+                {/* Preloader  */}
+                <div className="preloader"></div>
+
+                {/*  Main Header */}
+                <header className="main-header w-100">
+                    <div className="container-width main-box">
                         <div className="logo-box">
                             <div className="fs-4 fw-bold"><Link to={'/home'} className='primary-color'><img src={Logo} alt="logo" className='navbar-logo' /></Link></div>
                         </div>
@@ -145,126 +147,214 @@ export default function App() {
 
                                 <div className="collapse navbar-collapse clearfix" id="navbarSupportedContent">
                                     <ul className="navigation clearfix">
-                                        <li><Link to={'/home'}>Home</Link></li>
-                                        <li className="dropdown"><p className='cursor-pointer m-0'>Green Hydrogen</p>
+                                        <li><Link to={'/home'}><Translate title={`Home`} /></Link></li>
+                                        <li className="dropdown"><p className='cursor-pointer m-0'><Translate title={`Green Hydrogen`} /></p>
                                             <ul>
-                                                <li><Link to={'/green-hydrogen/overview'}>Overview</Link></li>
-                                                <li><Link to={'/green-hydrogen/production'}>Green Hydrogen Production</Link></li>
-                                                <li className='dropdown'><Link to={'/green-hydrogen/in-indonesia'}>Green Hydrogen in Indonesia</Link>
+                                                <li><Link to={'/green-hydrogen/overview'} ><Translate title={`Overview`} /></Link></li>
+                                                <li><Link to={'/green-hydrogen/production'} ><Translate title={`Green Hydrogen Production`} /></Link></li>
+                                                <li className='dropdown'><p><Translate title={`Green Hydrogen in Indonesia`} /></p>
                                                     <ul>
-                                                        <li><Link to={'/green-hydrogen/in-indonesia/overview'}>Overview Green Hydrogen in Indonesia</Link></li>
-                                                        <li><Link to={'/green-hydrogen/in-indonesia/potential'}>Indonesia's Green Hydrogen potential</Link></li>
-                                                        <li><Link to={'/green-hydrogen/in-indonesia/legal-framework'}>Legal Framework</Link></li>
-                                                        <li><Link to={'/green-hydrogen/in-indonesia/stakeholder-mapping'}>Stakeholder mapping</Link></li>
-                                                        <li><Link to={'/green-hydrogen/in-indonesia/initiation-action'}>Initiation & Action</Link></li>
-                                                        <li><Link to={'/green-hydrogen/in-indonesia/development-progress'}>Hydrogen Development Progress</Link></li>
+                                                        <li><Link to={'/green-hydrogen/in-indonesia/overview'} ><Translate title={`Overview Green Hydrogen in Indonesia`} /></Link></li>
+                                                        <li><Link to={'/green-hydrogen/in-indonesia/potential'} ><Translate title={`Indonesia's Green Hydrogen potential`} /></Link></li>
+                                                        <li><Link to={'/green-hydrogen/in-indonesia/legal-framework'} ><Translate title={`Legal Framework`} /></Link></li>
+                                                        <li><Link to={'/green-hydrogen/in-indonesia/stakeholder-mapping'} ><Translate title={`Stakeholder Mapping`} /></Link></li>
+                                                        <li><Link to={'/green-hydrogen/in-indonesia/initiation-action'} ><Translate title={`Initiation & Action`} /></Link></li>
+                                                        <li><Link to={'/green-hydrogen/in-indonesia/development-progress'} ><Translate title={`Hydrogen Development Progress`} /></Link></li>
                                                     </ul>
                                                 </li>
                                             </ul>
                                         </li>
-                                        <li><Link to={'/company-directories'}>Company Directories</Link></li>
-                                        <li><Link to={'/publications'}>Publications</Link></li>
-                                        <li className="dropdown"><p className='cursor-pointer m-0'>News & Event</p>
+                                        <li><Link to={'/company-directories'} ><Translate title={`Company Directories`} /></Link></li>
+                                        <li><Link to={'/publications'} ><Translate title={`Publications`} /></Link></li>
+                                        <li className="dropdown"><p className='cursor-pointer m-0'><Translate title={`News & Event`} /></p>
                                             <ul>
-                                                <li><p to={'/news-event/news'} className='text-secondary'>News</p></li>
-                                                <li><Link to={'/news-event/ongoing-tender-project'}>Ongoing Tender & Project</Link></li>
-                                                <li><Link to={'/news-event/event'}>Event</Link></li>
+                                                <li><Link to={'/news-event/news'} ><Translate title={`News`} /></Link></li>
+                                                <li><Link to={'/news-event/ongoing-tender-project'} ><Translate title={`Ongoing Tender & Project`} /></Link></li>
+                                                <li><Link to={'/news-event/event'} ><Translate title={`Event`} /></Link></li>
                                             </ul>
                                         </li>
-                                        <li className="dropdown"><p className='cursor-pointer m-0'>About Us</p>
+                                        <li className="dropdown"><p className='cursor-pointer m-0'><Translate title={`About Us`} /></p>
                                             <ul>
-                                                <li><p to={'/about-us/introduction-objectives'} className='text-secondary'>Introduction & Objectives</p></li>
-                                                <li><Link to={'/about-us/our-partners'}>Our Partners</Link></li>
-                                                <li><p to={'/about-us/activities'} className='text-secondary'>Activities</p></li>
-                                                <li><p to={'/about-us/contact-us'} className='text-secondary'>Contact us</p></li>
+                                                <li><Link to={'/about-us/introduction-objectives'}><Translate title={`Introduction & Objectives`} /></Link></li>
+                                                <li><Link to={'/about-us/our-partners'} ><Translate title={`Our Partners`} /></Link></li>
+                                                <li><Link to={'/about-us/activities'} ><Translate title={`Activities`} /></Link></li>
+                                                <li><Link to={'/about-us/contact-us'} ><Translate title={`Contact Us`} /></Link></li>
                                             </ul>
+                                        </li>
+                                    </ul>
+                                    <ul className="ms-auto navigation">
+                                        <li>
+                                            <Link to={"#"}><FaSearch /></Link>
+                                        </li>
+                                        <li className="dropdown"><p id='current-language' className='cursor-pointer m-0'><Translate title={`EN`} /></p>
+                                            <ul>
+                                                <li><p onClick={() => this.SwitchLanguage('id')} ><FlagIcon code={'id'} className='me-3'/> ID</p></li>
+                                                <li><p onClick={() => this.SwitchLanguage('en')} ><FlagIcon code={'us'} className='me-3'/> EN</p></li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <Link to={"#"}><span style={{ border: '3px solid white', borderRadius: '12px', padding: '8px 28px' }}><Translate title={`Join Us`} /></span></Link>
                                         </li>
                                     </ul>
                                 </div>
                             </nav>
-                            {/*  Main Menu End */}
+                        </div>
+                    </div>
 
-                            {/*  Outer box  */}
-                            <div className="outer-box">
-                                <div className='align-items-center btn d-flex secondary-background-color' style={{height: '36px'}}>
-                                    <BsGlobe className='text-white' />
-                                </div>
-                                <div className='align-items-center btn d-flex ms-2 px-4' style={{background: 'linear-gradient(45deg, rgba(0, 155, 76, 1) 0%, rgba(6, 97, 87, 1) 100%)', height: '36px'}}>
-                                    <p className='m-0'>Join Us</p>
-                                </div>
+                    {/*  Mobile Menu   */}
+                    <div className="mobile-menu">
+                        <div className="menu-backdrop"></div>
+                        <div className="close-btn"><span className="icon flaticon-cancel-music"></span></div>
+
+                        <nav className="menu-box">
+                            <div className="fs-4 fw-bold p-4 text-center">
+                                <Link to={'/home'} className='primary-color'><Translate title={`Green Hydrogen`} /></Link>
+                            </div>
+                            <ul className="navigation">
+                                <li>
+                                    <Link to={"/home"}><Translate title={`Home`} /></Link>
+                                </li>
+                                <li className="dropdown">
+                                    <p className="cursor-pointer m-0"><Translate title={`Green Hydrogen`} /></p>
+                                    <ul>
+                                        <li>
+                                            <Link to={"/green-hydrogen/overview"}><Translate title={`Overview`} /></Link>
+                                        </li>
+                                        <li>
+                                            <Link to={"/green-hydrogen/production"}><Translate title={`Green Hydrogen Production`} /></Link>
+                                        </li>
+                                        <li className="dropdown">
+                                            <p><Translate title={`Green Hydrogen in Indonesia`} /></p>
+                                            <ul>
+                                                <li>
+                                                    <Link to={"/green-hydrogen/in-indonesia/overview"}><Translate title={`Overview Green Hydrogen in Indonesia`} /></Link></li>
+                                                <li>
+                                                    <Link to={"/green-hydrogen/in-indonesia/potential"}><Translate title={`Indonesia's Green Hydrogen potential`} /></Link>
+                                                </li>
+                                                <li>
+                                                    <Link to={"/green-hydrogen/in-indonesia/legal-framework"}><Translate title={`Legal Framework`} /></Link>
+                                                </li>
+                                                <li>
+                                                    <Link to={"/green-hydrogen/in-indonesia/stakeholder-mapping"}><Translate title={`Stakeholder Mapping`} /></Link>
+                                                </li>
+                                                <li>
+                                                    <Link to={"/green-hydrogen/in-indonesia/initiation-action"}><Translate title={`Initiation & Action`} /></Link>
+                                                </li>
+                                                <li>
+                                                    <Link to={"/green-hydrogen/in-indonesia/development-progress"}><Translate title={`Hydrogen Development Progress`} /></Link>
+                                                </li>
+                                            </ul>
+                                            <div className="dropdown-btn">
+                                                <span className="fa fa-angle-down"></span>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                    <div className="dropdown-btn">
+                                        <span className="fa fa-angle-down"></span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <Link to={"/company-directories"}><Translate title={`Company Directories`} /></Link>
+                                </li>
+                                <li>
+                                    <Link to={"/publications"}><Translate title={`Publications`} /></Link>
+                                </li>
+                                <li className="dropdown">
+                                    <p className="cursor-pointer m-0"><Translate title={`News & Event`} /></p>
+                                    <ul>
+                                        <li>
+                                            <Link to={"/news-event/news"}><Translate title={`News`} /></Link>
+                                        </li>
+                                        <li>
+                                            <Link to={"/news-event/ongoing-tender-project"}><Translate title={`Ongoing Tender & Project`} /></Link>
+                                        </li>
+                                        <li>
+                                            <Link to={"/news-event/event"}><Translate title={`Event`} /></Link>
+                                        </li>
+                                    </ul>
+                                    <div className="dropdown-btn">
+                                        <span className="fa fa-angle-down"></span>
+                                    </div>
+                                </li>
+                                <li className="dropdown">
+                                    <p className="cursor-pointer m-0"><Translate title={`About Us`} /></p>
+                                    <ul>
+                                        <li>
+                                            <Link to={"/about-us/introduction-objectives"}><Translate title={`Introduction & Objectives`} /></Link>
+                                        </li>
+                                        <li>
+                                            <Link to={"/about-us/our-partners"}><Translate title={`Our Partners`} /></Link>
+                                        </li>
+                                        <li>
+                                            <Link to={"/about-us/activities"}><Translate title={`Activities`} /></Link>
+                                        </li>
+                                        <li>
+                                            <Link to={"/about-us/contact-us"}><Translate title={`Contact Us`} /></Link>
+                                        </li>
+                                    </ul>
+                                    <div className="dropdown-btn">
+                                        <span className="fa fa-angle-down"></span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                    {/*  End Mobile Menu  */}
+
+                </header >
+                {/* End Main Header  */}
+
+                <Routes Routes >
+                    <Route path='/' element={<Navigate to={'/home'} />} />
+                    <Route path='/home' element={<Home />} />
+                    <Route path='/green-hydrogen/overview' element={<GreenHydrogenOverview />} />
+                    <Route path='/green-hydrogen/production' element={<GreenHydrogenProduction />} />
+                    {/* <Route path='/green-hydrogen/in-indonesia' element={<GreenHydrogenIndonesia />} /> */}
+                    <Route path='/green-hydrogen/in-indonesia/overview' element={<GreenHydrogenIndonesiaOverview />} />
+                    <Route path='/green-hydrogen/in-indonesia/potential' element={<GreenHydrogenIndonesiaPotential />} />
+                    <Route path='/green-hydrogen/in-indonesia/legal-framework' element={<GreenHydrogenIndonesiaLegalFramework />} />
+                    <Route path='/green-hydrogen/in-indonesia/stakeholder-mapping' element={<GreenHydrogenIndonesiaStakeholderMapping />} />
+                    <Route path='/green-hydrogen/in-indonesia/initiation-action' element={<GreenHydrogenIndonesiaInitiationAction />} />
+                    <Route path='/green-hydrogen/in-indonesia/development-progress' element={<GreenHydrogenIndonesiaDevelopmentProgress />} />
+                    <Route path='/company-directories' element={<CompanyDirectories />} />
+                    <Route path='/publications' element={<Publications />} />
+                    <Route path='/news-event/news' element={<News />} />
+                    <Route path='/news-event/ongoing-tender-project' element={<OngoingTenderProject />} />
+                    <Route path='/news-event/event' element={<Event />} />
+                    <Route path='/about-us/introduction-objectives' element={<IntroductionObjectives />} />
+                    <Route path='/about-us/our-partners' element={<OurPartners />} />
+                    <Route path='/about-us/activities' element={<Activities />} />
+                    <Route path='/about-us/contact-us' element={<ContuctUs />} />
+                </Routes>
+
+                {/* Subscribe Section */}
+                <section section className="subscribe-section wow fadeIn" >
+                    <div className="container-width">
+                        <div className="content-box justify-content-lg-between">
+                            <div className="col-12 col-lg sec-title style-two light text-center">
+                                <h3 className='fw-bold'><Translate title={`Subscribe Newsletter`} /></h3>
+                                <p className='fw-bold m-0'><Translate title={`Subscribe Newsletter & get always update information.`} /></p>
+                            </div>
+
+                            {/* Newsletter Form */}
+                            <div className="col-12 col-lg d-flex flex-wrap gap-2 py-2 ps-lg-5">
+                                <input type="email" name="field-name" placeholder="Your Email" className='col-12 col-md form-control' required />
+                                <button type="submit" className="btn col-12 col-md-4 fw-bold ms-lg-4 third-background-color text-white"><Translate title={`Subscribe`} /></button>
                             </div>
                         </div>
                     </div>
-                </div>
+                </section>
+                {/* End Subscribe Section */}
 
-                {/*  Mobile Menu   */}
-                <div className="mobile-menu">
-                    <div className="menu-backdrop"></div>
-                    <div className="close-btn"><span className="icon flaticon-cancel-1"></span></div>
-
-                    {/* Here Menu Will Come Automatically Via Javascript / Same Menu as in Header */}
-                    <nav className="menu-box">
-                        <div className="fs-4 fw-bold p-4 text-center"><Link to={'/home'} className='primary-color'>Green Hydrogen</Link></div>
-
-                        <ul className="navigation clearfix">{/* Keep This Empty / Menu will come through Javascript */}</ul>
-                    </nav>
-                </div>{/*  End Mobile Menu  */}
-
-            </header>
-            {/* End Main Header  */}
-
-            <Routes>
-                <Route path='/' element={<Navigate to={'/home'} />} />
-                <Route path='/home' element={<Home />} />
-                <Route path='/green-hydrogen/overview' element={<GreenHydrogenOverview />} />
-                <Route path='/green-hydrogen/production' element={<GreenHydrogenProduction />} />
-                <Route path='/green-hydrogen/in-indonesia' element={<GreenHydrogenIndonesia />} />
-                <Route path='/green-hydrogen/in-indonesia/overview' element={<GreenHydrogenIndonesiaOverview />} />
-                <Route path='/green-hydrogen/in-indonesia/potential' element={<GreenHydrogenIndonesiaPotential />} />
-                <Route path='/green-hydrogen/in-indonesia/legal-framework' element={<GreenHydrogenIndonesiaLegalFramework />} />
-                <Route path='/green-hydrogen/in-indonesia/stakeholder-mapping' element={<GreenHydrogenIndonesiaStakeholderMapping />} />
-                <Route path='/green-hydrogen/in-indonesia/initiation-action' element={<GreenHydrogenIndonesiaInitiationAction />} />
-                <Route path='/green-hydrogen/in-indonesia/development-progress' element={<GreenHydrogenIndonesiaDevelopmentProgress />} />
-                <Route path='/company-directories' element={<CompanyDirectories />} />
-                <Route path='/publications' element={<Publications />} />
-                <Route path='/news-event/news' element={<News />} />
-                <Route path='/news-event/ongoing-tender-project' element={<OngoingTenderProject />} />
-                <Route path='/news-event/event' element={<Event />} />
-                <Route path='/about-us/introduction-objectives' element={<IntroductionObjectives />} />
-                <Route path='/about-us/our-partners' element={<OurPartners />} />
-                <Route path='/about-us/activities' element={<Activities />} />
-                <Route path='/about-us/contuct-us' element={<ContuctUs />} />
-            </Routes>
-
-            {/* Subscribe Section */}
-            <section className="subscribe-section wow fadeIn">
-                <div className="auto-container">
-                    <div className="content-box justify-content-lg-between">
-                        <div className="col-12 col-lg sec-title style-two light text-center">
-                            <h3 className='fw-bold'>Subscribe Newsletter</h3>
-                            <p className='fw-bold m-0'>Subscribe Newsletter & get always update information.</p>
-                        </div>
-
-                        {/* Newsletter Form */}
-                        <div className="col-12 col-lg d-flex flex-wrap gap-2 py-2 ps-lg-5">
-                            <input type="email" name="field-name" placeholder="Your Email" className='col-12 col-md form-control' required />
-                            <button type="submit" className="btn col-12 col-md-4 fw-bold ms-lg-4 navy-background-color text-white">Subscribe</button>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            {/* End Subscribe Section */}
-
-            {/*  Main Footer  */}
-            <footer className="main-footer">
-                {/* Widgets Section */}
-                <div className="widgets-section">
-                    <div className="auto-container">
+                {/*  Main Footer  */}
+                <footer className="main-footer">
+                    {/* Widgets Section */}
+                    <div className="container-width widgets-section">
                         <div className="row">
                             <div className="big-column col-xl-4 col-lg-12 col-md-12">
                                 {/* Footer Column */}
                                 <div className="footer-column about-widget">
-                                    <img src={FooterLogo} alt="footer-logo" className='pb-4' />
+                                    <img src={FooterLogo} alt="footer-logo" className='pb-4 wm-100' />
                                     <p className='m-0'>Lorem ipsum dolor sit amet, consectetur adipiscing
                                         elit. Non, lobortis in in tortor lectus iaculis viverra.
                                         Adipiscing lobortis interdum fringilla euismod odio
@@ -272,57 +362,57 @@ export default function App() {
                                     <ul className="social-icon-one text-center text-lg-start pt-4">
                                         <li><Link to={'/'}><span className="fab fa-facebook-f"></span></Link></li>
                                         <li><Link to={'/'}><span className="fab fa-twitter"></span></Link></li>
-                                        <li><Link to={'/'}><span className="fab fa-vimeo-v"></span></Link></li>
-                                        <li><Link to={'/'}><span className="fab fa-linkedin-in"></span></Link></li>
+                                        <li><Link to={'/'}><span className="fab fa-instagram"></span></Link></li>
+                                        <li><Link to={'/'}><span className="fab fa-youtube"></span></Link></li>
                                     </ul>
                                 </div>
                             </div>
 
                             <div className="big-column col-xl-8 col-lg-12 col-md-12 row m-0">
-                                <div className="col-12 col-lg-4 footer-column">
+                                <div className="col-12 col-lg-6 footer-column">
                                     <div className="footer-widget links-widget">
-                                        <p className="widget-title">Green Hydrogen</p>
+                                        <p className="widget-title"><Translate title={`Green Hydrogen`} /></p>
                                         <div className="d-flex flex-wrap widget-content">
-                                            <ul className="list col-12 col-lg-6 pe-lg-2">
-                                                <li><Link to={'/'}><FaLongArrowAltRight /> Overview</Link></li>
-                                                <li><Link to={'/'}><FaLongArrowAltRight /> Green Hydrogen Work?</Link></li>
-                                                <li><Link to={'/'}><FaLongArrowAltRight /> Green Hydrogen in Indonesia</Link></li>
+                                            <ul className="list col-12 col-sm-6 pe-lg-2">
+                                                <li><Link to={'/'}><FaLongArrowAltRight /> <Translate title={`Overview`} /></Link></li>
+                                                <li><Link to={'/'}><FaLongArrowAltRight /> <Translate title={`Green Hydrogen Work?`} /></Link></li>
+                                                <li><Link to={'/'}><FaLongArrowAltRight /> <Translate title={`Green Hydrogen in Indonesia`} /></Link></li>
                                             </ul>
-                                            <ul className="list col-12 col-lg-6 ps-lg-2">
-                                                <li><Link to={'/'}><FaLongArrowAltRight /> Overview Hydrogen in Indonesia</Link></li>
-                                                <li><Link to={'/'}><FaLongArrowAltRight /> Indonesia is Hydrogen Potensial</Link></li>
-                                                <li><Link to={'/'}><FaLongArrowAltRight /> Legal Framework</Link></li>
-                                                <li><Link to={'/'}><FaLongArrowAltRight /> Initiation & Action</Link></li>
+                                            <ul className="list col-12 col-sm-6 ps-lg-2">
+                                                <li><Link to={'/'}><FaLongArrowAltRight /> <Translate title={`Overview Hydrogen in Indonesia`} /></Link></li>
+                                                <li><Link to={'/'}><FaLongArrowAltRight /> <Translate title={`Indonesia is Hydrogen Potensial`} /></Link></li>
+                                                <li><Link to={'/'}><FaLongArrowAltRight /> <Translate title={`Legal Framework`} /></Link></li>
+                                                <li><Link to={'/'}><FaLongArrowAltRight /> <Translate title={`Initiation & Action`} /></Link></li>
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
-                                <div className="col-12 col-md-6 col-lg-4 col-xl-3 footer-column">
+                                <div className="col-12 col-sm-6 col-lg-4 col-xl-3 footer-column">
                                     <div className="footer-widget links-widget">
-                                        <p className="widget-title">About Us</p>
+                                        <p className="widget-title"><Translate title={`About Us`} /></p>
                                         <div className="widget-content">
                                             <ul className="list">
-                                                <li><Link to={'/'}>Our Introduction & Objectives</Link></li>
-                                                <li><Link to={'/'}>Our Partner</Link></li>
-                                                <li><Link to={'/'}>Activities</Link></li>
-                                                <li><Link to={'/'}>Contact Us</Link></li>
+                                                <li><Link to={'/'}><Translate title={`Our Introduction & Objectives`} /></Link></li>
+                                                <li><Link to={'/'}><Translate title={`Our Partner`} /></Link></li>
+                                                <li><Link to={'/'}><Translate title={`Activities`} /></Link></li>
+                                                <li><Link to={'/'}><Translate title={`Contact Us`} /></Link></li>
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
-                                <div className="col-12 col-md-6 col-lg-4 col-xl-3 footer-column">
+                                <div className="col-12 col-sm-6 col-lg-4 col-xl-3 footer-column">
                                     <div className="footer-widget links-widget">
-                                        <p className="widget-title">Contact Support</p>
+                                        <p className="widget-title"><Translate title={`Contact Support`} /></p>
                                         <div className="widget-content">
                                             <ul className="list">
                                                 <li><Link to={'/'} className='text-nowrap'><FaRegEnvelope /> contact@greenenergy.com</Link></li>
                                                 <li><Link to={'/'}><FaPhone /> (021) 5555 3333</Link></li>
                                             </ul>
                                         </div>
-                                        <p className="widget-title">Location</p>
+                                        <p className="widget-title"><Translate title={`Location`} /></p>
                                         <div className="widget-content">
                                             <ul className="list">
-                                                <li><Link to={'/'}><FaMapMarkerAlt /> See Goggle Map <FaLongArrowAltRight /> </Link></li>
+                                                <li><Link to={'/'}><FaMapMarkerAlt /> <Translate title={`See Goggle Map`} /> <FaLongArrowAltRight /> </Link></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -330,23 +420,25 @@ export default function App() {
                             </div>
                         </div>
                     </div>
-                </div>
 
-                {/* Bottom */}
-                <div className="footer-bottom primary-background-color">
-                    <div className="auto-container">
-                        <div className="copyright-text">LOGO (GIZ BSFD, EKONID etc) - similiar to EPR</div>
+                    {/* Bottom */}
+                    <div className="footer-bottom primary-background-color">
+                        <div className="container-width p-0">
+                            <div className="copyright-text">LOGO (GIZ BSFD, EKONID etc) - similiar to EPR</div>
+                        </div>
                     </div>
-                </div>
 
-            </footer>
-            {/*  End Main Footer  */}
+                </footer>
+                {/*  End Main Footer  */}
 
-            {/* End pagewrapper */}
+                {/* End pagewrapper */}
 
-            {/* Scroll to top */}
-            <div className="scroll-to-top scroll-to-target" data-target="html"><span className="fa fa-angle-double-up"></span></div>
+                {/* Scroll to top */}
+                <div className="scroll-to-top scroll-to-target" onClick={this.ScrollToTop}><span className="fa fa-angle-double-up"></span></div>
 
-        </div>
-    );
+            </div >
+        )
+    }
 }
+
+export default App

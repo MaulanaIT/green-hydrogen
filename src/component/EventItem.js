@@ -4,7 +4,7 @@ import { FaMapMarkerAlt, FaRegBookmark } from 'react-icons/fa';
 export class EventItem extends Component {
     render() {
         return (
-            <div className='bg-light p-3 mb-3' style={{ height: '400px' }}>
+            <div className='bg-secondary p-3 mb-3'>
                 <div className='bg-white h-100 m-0 p-3 p-lg-4 row'>
                     <div className='col-12 col-lg-auto'>
                         <div className='bg-secondary mx-auto mx-lg-0' style={{ borderRadius: '50%', height: '100px', width: '100px' }}></div>

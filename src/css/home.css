@@ -1,0 +1,119 @@
+@import url('custom.css');
+
+.button-involved {
+    background: var(--fourth-color);
+    border-radius: 8px;
+    color: white;
+    display: inline-block;
+    font-weight: bold;
+    overflow: hidden;
+    padding: 8px 16px;
+    position: relative;
+}
+
+.button-involved::before {
+    background: var(--primary-color);
+    clip-path: polygon(0 0, 80% 0, 100% 100%, 0 100%);
+    content: '';
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 60%;
+}
+
+.button-involved>.container {
+    position: relative;
+}
+
+.button-involved>.container>a {
+    color: white;
+}
+
+.button-our-activity {
+    background: #C1D83E;
+    border-radius: 8px;
+    color: black;
+    display: inline-block;
+    font-weight: bold;
+    overflow: hidden;
+    padding: 8px 16px;
+    position: relative;
+}
+
+.button-our-activity::before {
+    background: white;
+    clip-path: polygon(0 0, 80% 0, 100% 100%, 0 100%);
+    content: '';
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 60%;
+}
+
+.button-our-activity>.container {
+    position: relative;
+}
+
+.button-our-activity>.container>a {
+    color: black;
+}
+
+.social-media {
+    left: 0px;
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    z-index: 1;
+}
+
+.social-media>ul {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.social-media>ul>li {
+    display: block;
+    position: relative;
+}
+
+.social-media>ul>li>a {
+    align-items: center;
+    border: 1px solid white;
+    border-radius: 50%;
+    position: relative;
+    display: flex;
+    height: 40px;
+    width: 40px;
+    text-align: center;
+    justify-content: center;
+    font-size: 14px;
+    color: white;
+    -webkit-transition: all 300ms ease;
+    -moz-transition: all 300ms ease;
+    -ms-transition: all 300ms ease;
+    -o-transition: all 300ms ease;
+    transition: all 300ms ease;
+}
+
+.social-media>ul>li>a:hover {
+    background-color: #6EC624;
+    border-color: #6EC624;
+    color: #ffffff;
+}
+
+@media only screen and (max-width: 1023px) {
+    .social-media {
+        bottom: 45px;
+        left: 50%;
+        top: auto;
+        transform: translate(-50%, 0);
+    }
+
+    .social-media>ul {
+        flex-direction: row;
+    }
+
+}

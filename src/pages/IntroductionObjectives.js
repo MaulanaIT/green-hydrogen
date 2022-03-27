@@ -1,278 +1,175 @@
 import React from 'react';
 
-import AboutImage1 from '../images/resource/about-img-1.jpg';
-import AboutImage2 from '../images/resource/about-img-2.jpg';
-import DayPass1 from '../images/icons/day-pass-1.png';
-import DayPass2 from '../images/icons/day-pass-2.png';
-import DayPass3 from '../images/icons/day-pass-3.png';
-import Gold1 from '../images/clients/gold-1.png';
-import Gold2 from '../images/clients/gold-2.png';
-import Gold3 from '../images/clients/gold-3.png';
-import Gold4 from '../images/clients/gold-4.png';
-import Gold5 from '../images/clients/gold-5.png';
-import News1 from '../images/resource/news-1.jpg';
-import News2 from '../images/resource/news-2.jpg';
-import News3 from '../images/resource/news-3.jpg';
-import Platinum1 from '../images/clients/platinum-1.png';
-import Platinum2 from '../images/clients/platinum-2.png';
-import Silver1 from '../images/clients/silver-1.png';
-import Silver2 from '../images/clients/silver-2.png';
-import Silver3 from '../images/clients/silver-3.png';
+import BackgroundMainBanner from '../assets/company-directories/background-main-banner.png';
+import BackgroundBanner2 from '../assets/about-us-introduction/background-banner-2.png';
+import BackgroundVideo from '../assets/about-us-introduction/background-banner-1.png';
+import IconBanner1 from '../assets/about-us-introduction/icon-banner-1.png';
+import IconBanner2 from '../assets/about-us-introduction/icon-banner-2.png';
+import IconBanner3_1 from '../assets/about-us-introduction/icon-banner-3-1.png';
+import IconBanner3_2 from '../assets/about-us-introduction/icon-banner-3-2.png';
+import IconBanner3_3 from '../assets/about-us-introduction/icon-banner-3-3.png';
+import IconBanner3_4 from '../assets/about-us-introduction/icon-banner-3-4.png';
+import IconBanner3_5 from '../assets/about-us-introduction/icon-banner-3-5.png';
+
+import Sponsor from '../component/Sponsor';
+import { FaLongArrowAltRight, FaPhone, FaRegEnvelope, FaRegUser, FaUser, FaUserAlt } from 'react-icons/fa';
 
 export default function IntroductionObjectives() {
     return (
         <>
-            {/*  Fluid Section One */}
-            <section className="fluid-section-one">
-                <div className="outer-box clearfix">
+            <div className='fluid-section-two' style={{ background: `url(${BackgroundMainBanner}) no-repeat`, backgroundSize: 'cover' }}>
+                <div className='align-items-center container-width d-flex flex-column justify-content-center h-100'>
+                    <p className='fw-bold mt-lg-5 text-center text-size-20 text-size-lg-25'>ABOUT US</p>
+                    <p className='text-center text-size-5 text-size-lg-8'>About Us | Introduction & Objectives</p>
+                </div>
+            </div>
 
-                    {/*  Content Column */}
-                    <div className="content-column left-side">
-                        <div className="inner-column left-side">
-                            <div>
-                                <h3>GREEN HYDROGEN</h3>
-                                <h2 className='primary-color'>IS OUR FUTURE</h2>
-                                <p>05 Januari - 13 Januari Hall Conference, Indonesia</p>
-                            </div>
+            <div className='container container-width my-5'>
+                <img src={IconBanner1} alt="" className='w-100' />
+            </div>
+
+            <section className='container container-article-section container-width'>
+                <p className='text-black'>Launched in May 2022, Hydrogen Business Desk (HBD) is part of EKONID services that provides information regarding the development of hydrogen, primarily green hydrogen in Indonesia.
+                    <br /><br />
+                    The development of the energy sector is currently moving towards a greener and more environmentally friendly direction due to climate change, Indonesia as one of the most significant energy users in the world with a population of more than 280 million, requires a tremendous amount of energy compared to other countries. The National Energy Council predicts that electricity consumption in 2050 will reach 2,000 Terra Watt-hour (Twh).</p>
+            </section>
+
+            <section className='banner-container-image container-article-section gradient-background-color'>
+                <div className='container container-article-section-flex container-width p-0'>
+                    <div className='col-12 col-sm-6 d-none d-sm-flex'>
+                        <img src={IconBanner2} alt="" className='h-100 w-100' />
+                    </div>
+                    <div className='col-12 col-sm-6 d-flex flex-column justify-content-center p-3'>
+                        <p className='fw-bold text-start text-size-20 text-size-lg-25'>Indonesia is Commited</p>
+                        <p className='fw-bold'>to reducing greenhouse gas emissions by 2030</p>
+                        <p>Currently, Indonesia is trying to reduce fuels sourced from fossil energyThrough the ratification of the Paris Agreement, Indonesia is committed to reducing greenhouse gas emissions by 29% with its efforts and 41% with international assistance according to the NDC (Nationally Determined Contribution) in 2030. </p>
+                    </div>
+                </div>
+            </section>
+
+            <section className='container container-article-section container-width'>
+                <p className='text-black'>Green hydrogen as a potential green energy that is currently not being fully utilized in Indonesia so that references related to this sector are still very limited to be found. As one of the platforms that focus on hydrogen specifically green hydrogen, Hydrogen Business Desk (HWB) is expected to serve as a reference for companies that need information on the development of green hydrogen in Indonesia.</p>
+                <p className='text-black'>Hydrogen Business Desk is a project initiated and supported by GIZ and fully operated by EKONID.</p>
+            </section>
+
+            <section className='container container-article-section container-width'>
+                <p className='fw-bold secondary-color text-black text-size-lg-12 text-size-15'>Hydrogen Business Desk Objectives (Benefit)</p>
+                <p className='text-black'>The primary objective of the hydrogen business desk project is the presentation of current situation activities in hydrogen research and industry as well as the making-transparent of hydrogen government plant and relevant stakeholders, the promotion of German hydrogen expertise via an H2 Business Desk online platform, and the implementation of an advisory Hydrogen Business Desk as part of EKONID's service portfolio.</p>
+            </section>
+
+            <section className='container container-article-section container-width'>
+                <p className='text-black'>The following is the purpose of the Hydrogen business desk platform, including:</p>
+                <ul className='text-black'>
+                    <li>a.&ensp;The hydrogen business desk provides you with all information on the topic of green hydrogen in Indonesia, especially the presentation of current
+                        activities of research and industry and making transparent government plans and relevant stakeholders.</li>
+                    <li>b.&ensp;Hydrogen business desk as a facility to promote German hydrogen expertise in Indonesia, primarily through online seminars with German experts</li>
+                    <li>c.&ensp;The Hydrogen Business Desk provides all know-how development activities to provide substantial advice on the green hydrogen sector.</li>
+                    <li>d.&ensp;Hydrogen business desk as an online platform to provide updates regarding e-tenders and ongoing projects in Indonesia</li>
+                </ul>
+            </section>
+
+            <section className='container container-article-section container-width'>
+                <p className='fw-bold secondary-color text-black text-size-lg-12 text-size-15'>Hydrogen Business Desk Objectives</p>
+            </section>
+
+            <section className='container container-article-section container-width objective-business-desk-container'>
+                <div className='col-12 col-lg-6 pb-4 pe-lg-2'>
+                    <div className='aling-items-center d-flex'>
+                        <p className='objective-business-desk-number'>1</p>
+                        <p className='objective-business-desk-title'>Market Information</p>
+                    </div>
+                    <div className='objective-business-desk-content'>
+                        <div>
+                            <p className='text-black'>We provides all information on the topic of green hydrogen in indonesia, especially the presentation of current activities of research and industry and making transparent goverment plans and relevant stakeholders.</p>
+                        </div>
+                        <div>
+                            <img src={IconBanner3_1} alt="" className='w-100' />
                         </div>
                     </div>
-
-                    {/*  Content Column */}
-                    <div className="content-column right-side">
-                        <div className="inner-column right-side">
-                            <div>
-                                <h4>JOIN OUR</h4>
-                                <h3 className='primary-color'>IMPACT COMMUNITIES</h3>
-                                <p>Our impartial global network of nearly 100 national Member Committees connects energy leaders, industries, governments, innovators and experts across the world.</p>
-                            </div>
+                </div>
+                <div className='col-12 col-lg-6 pb-4 ps-lg-2'>
+                    <div className='aling-items-center d-flex'>
+                        <p className='objective-business-desk-number'>2</p>
+                        <p className='objective-business-desk-title'>Technical Seminar</p>
+                    </div>
+                    <div className='objective-business-desk-content'>
+                        <div>
+                            <p className='text-black'>Hydrogen business desk as a facility to promote German Hydrogen expertise in Indonesia, primarily through online seminars with German experts</p>
+                        </div>
+                        <div>
+                            <img src={IconBanner3_2} alt="" className='w-100' />
+                        </div>
+                    </div>
+                </div>
+                <div className='col-12 col-lg-6 pb-4 pe-lg-2'>
+                    <div className='aling-items-center d-flex'>
+                        <p className='objective-business-desk-number'>3</p>
+                        <p className='objective-business-desk-title'>Business Consultancy</p>
+                    </div>
+                    <div className='objective-business-desk-content'>
+                        <div>
+                            <p className='text-black'>The Hydrogen Business Desk provides all know how development activities to provide substantial advice on the green hydrogen sector</p>
+                        </div>
+                        <div>
+                            <img src={IconBanner3_3} alt="" className='w-100' />
+                        </div>
+                    </div>
+                </div>
+                <div className='col-12 col-lg-6 pb-4 ps-lg-2'>
+                    <div className='aling-items-center d-flex'>
+                        <p className='objective-business-desk-number'>4</p>
+                        <p className='objective-business-desk-title'>E - Tender & Ongoing Projects</p>
+                    </div>
+                    <div className='objective-business-desk-content'>
+                        <div>
+                            <p className='text-black'>Hydrogen busniess desk as an online platform to provide updates regarding e-tenders and ongoing projects in Indonesia</p>
+                        </div>
+                        <div>
+                            <img src={IconBanner3_4} alt="" className='w-100' />
+                        </div>
+                    </div>
+                </div>
+                <div className='col-12 col-lg-6'>
+                    <div className='aling-items-center d-flex'>
+                        <p className='objective-business-desk-number'>5</p>
+                        <p className='objective-business-desk-title'>Other</p>
+                    </div>
+                    <div className='objective-business-desk-content'>
+                        <div>
+                            <p className='text-black'>As a source of information about green hydrogen accurately and reliably</p>
+                        </div>
+                        <div>
+                            <img src={IconBanner3_5} alt="" className='w-100' />
                         </div>
                     </div>
                 </div>
             </section>
-            {/* End Fluid Section One */}
 
-            {/*  About Section  */}
-            <section className="about-section">
-                <div className="parallax-scene parallax-scene-1 anim-icons">
-                    <span data-depth="0.20" className="parallax-layer icon icon-mic"></span>
-                    <span data-depth="0.20" className="parallax-layer icon icon-mic"></span>
-                    <span data-depth="0.30" className="parallax-layer icon icon-mic-2"></span>
-                    <span data-depth="0.40" className="parallax-layer icon icon-mic-2"></span>
-                    <span data-depth="0.50" className="parallax-layer icon icon-speaker"></span>
-                    <span data-depth="0.60" className="parallax-layer icon icon-speaker-2"></span>
-                    <span data-depth="0.30" className="parallax-layer icon icon-shape-1"></span>
-                    <span data-depth="0.80" className="parallax-layer icon icon-man"></span>
-                </div>
-
-                <div className="auto-container">
-                    <div className="row">
-                        {/*  Content Column  */}
-                        <div className="content-column col-lg-6 col-md-12 col-sm-12">
-                            <div className="inner-column">
-                                <div className="sec-title text-black">
-                                    <h2 className='m-0'>About Event</h2>
-                                    <h4>What is business Startup conference?</h4>
-                                    <p className='text-black'>Best Event Planner of the year, 2021 Exerci tation ullamcorper suscipit lobortis aliquip ex ea commodo consequat duis autem vel eum iriure augue duis dolore. Exerci tation ullamcorper suscipit lobortis. nisl ut aliquip ex ea commodo consequat duis autem vel eum iriure augue duis</p>
-                                </div>
-                                <div className="btn-box"><a href="contact.html" className="theme-btn btn-style-two"><span className="btn-title">Register Now</span></a></div>
-                            </div>
-                        </div>
-
-                        {/*  Image Column  */}
-                        <div className="image-column col-lg-6 col-md-12 col-sm-12">
-                            <div className="image-box">
-                                <figure className="image-1 wow fadeIn"><img src={AboutImage1} alt="" /></figure>
-                                <figure className="image-2 wow fadeInRight"><img src={AboutImage2} alt="" /></figure>
-                            </div>
-                        </div>
+            <section className='gradient-background-color' style={{ height: '350px' }}>
+                <div className='d-flex flex-wrap gap-0 h-100'>
+                    <div className='align-items-center col-12 col-sm-6 d-none d-sm-flex'>
+                        <img src={BackgroundBanner2} alt="" className='h-100 w-100' />
                     </div>
-                </div>
-            </section>
-            {/* End About Section  */}
-
-            {/*  Pricing Section */}
-            <section className="bg-secondary pricing-section-two">
-                <div className="auto-container">
-                    <div className="sec-title style-two light text-center">
-                        <span className="title">Pricing Plans</span>
-                        <h2>Get your Ticket</h2>
-                    </div>
-
-                    <div className="row">
-                        {/*  Pricing Block Two */}
-                        <div className="pricing-block-two col-lg-4 col-md-6 col-sm-12 wow fadeInUp">
-                            <div className="inner-box">
-                                <figure className="image"><img src={DayPass1} alt="" /></figure>
-                                <div className="price">$142</div>
-                                <h4 className="title">Early Bird</h4>
-                                <ul className="features">
-                                    <li>Conference Tickets</li>
-                                    <li>Free Lunch And Coffee</li>
-                                    <li>Easy Access</li>
-                                    <li>Certificate</li>
-                                    <li>Printed Metarials</li>
-                                </ul>
-                                <div className="btn-box">
-                                    <a href="contact.html" className="theme-btn">Buy Ticket</a>
-                                </div>
-                            </div>
+                    <div className='col-12 col-sm-6 d-flex flex-column justify-content-center p-3 p-lg-5' style={{ maxWidth: '550px' }}>
+                        <div>
+                            <p className='fw-bold pb-3 text-size-10 text-size-lg-15 text-white'>We have top executive &
+                                start up here</p>
+                            <p>Contrary to popular belief, Lorem Ipsum is not
+                                simply random text. It has roots in a piece of classical Latin literature from 45 BC,
+                                making it over 2000 years old. Green Hydrogen</p>
                         </div>
-
-                        {/*  Pricing Block Two */}
-                        <div className="pricing-block-two tagged col-lg-4 col-md-6 col-sm-12 wow fadeInDown">
-                            <div className="inner-box">
-                                <figure className="image"><img src={DayPass2} alt="" /></figure>
-                                <div className="price">$142</div>
-                                <h4 className="title">Early Bird</h4>
-                                <ul className="features">
-                                    <li>Conference Tickets</li>
-                                    <li>Free Lunch And Coffee</li>
-                                    <li>Easy Access</li>
-                                    <li>Certificate</li>
-                                    <li>Printed Metarials</li>
-                                </ul>
-                                <div className="btn-box">
-                                    <a href="contact.html" className="theme-btn">Buy Ticket</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        {/*  Pricing Block Two */}
-                        <div className="pricing-block-two col-lg-4 col-md-6 col-sm-12 wow fadeInUp">
-                            <div className="inner-box">
-                                <figure className="image"><img src={DayPass3} alt="" /></figure>
-                                <div className="price">$142</div>
-                                <h4 className="title">Early Bird</h4>
-                                <ul className="features">
-                                    <li>Conference Tickets</li>
-                                    <li>Free Lunch And Coffee</li>
-                                    <li>Easy Access</li>
-                                    <li>Certificate</li>
-                                    <li>Printed Metarials</li>
-                                </ul>
-                                <div className="btn-box">
-                                    <a href="contact.html" className="theme-btn">Buy Ticket</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            {/* End Pricing Section */}
-
-            {/*  News Section */}
-            <section className="news-section">
-                <div className="auto-container">
-                    <div className="sec-title style-two text-center">
-                        <span className="title">Info Update</span>
-                        <h2>Latest News</h2>
-                    </div>
-
-                    <div className="row">
-                        {/*  News Block */}
-                        <div className="news-block col-lg-4 col-md-6 col-sm-12 wow fadeInUp">
-                            <div className="inner-box">
-                                <div className="image-box">
-                                    <figure className="image"><a href="blog-single.html"><img src={News1} alt="" /></a></figure>
-                                </div>
-                                <div className="lower-content">
-                                    <ul className="post-info">
-                                        <li><a href="blog-single.html">February 24, 2019</a></li>
-                                        <li><a href="blog-single.html">Event, UX</a></li>
-                                    </ul>
-                                    <h3><a href="blog-single.html">Benefits of using a WordPress Gutenberg theme</a></h3>
-                                    <div className="author-info"><span className="icon icon_profile"></span><a href="#">By NIjam Ali</a></div>
-                                </div>
-                            </div>
-                        </div>
-
-                        {/*  News Block */}
-                        <div className="news-block col-lg-4 col-md-6 col-sm-12 wow fadeInUp" data-wow-delay="400ms">
-                            <div className="inner-box">
-                                <div className="image-box">
-                                    <figure className="image"><a href="blog-single.html"><img src={News2} alt="" /></a></figure>
-                                </div>
-                                <div className="lower-content">
-                                    <ul className="post-info">
-                                        <li><a href="blog-single.html">January 10, 2019</a></li>
-                                        <li><a href="blog-single.html">Event, UX</a></li>
-                                    </ul>
-                                    <h3><a href="blog-single.html">Benefits of using a WordPress Gutenberg theme</a></h3>
-                                    <div className="author-info"><span className="icon icon_profile"></span><a href="#">By NIjam Ali</a></div>
-                                </div>
-                            </div>
-                        </div>
-
-                        {/*  News Block */}
-                        <div className="news-block col-lg-4 col-md-6 col-sm-12 wow fadeInUp" data-wow-delay="800ms">
-                            <div className="inner-box">
-                                <div className="image-box">
-                                    <figure className="image"><a href="blog-single.html"><img src={News3} alt="" /></a></figure>
-                                </div>
-                                <div className="lower-content">
-                                    <ul className="post-info">
-                                        <li><a href="blog-single.html">March 24, 2019</a></li>
-                                        <li><a href="blog-single.html">Event, UX</a></li>
-                                    </ul>
-                                    <h3><a href="blog-single.html">Benefits of using a WordPress Gutenberg theme</a></h3>
-                                    <div className="author-info"><span className="icon icon_profile"></span><a href="#">By NIjam Ali</a></div>
+                        <div>
+                            <div className="button-our-activity mt-5">
+                                <div className='container'>
+                                    <a href="#">Our Activity</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
-            {/* End News Section */}
 
-            {/*  Clients Section */}
-            <section className="clients-section-two">
-                <div className="auto-container">
-                    <div className="sec-title text-center style-two">
-                        <span className="title">Event Sponsors</span>
-                        <h2>Partners & Sponsors</h2>
-                    </div>
-
-                    {/*  Sponsors Outer */}
-                    <div className="sponsors-outer wow fadeInUp">
-                        <div className="title-box"><h3>Platinum Sponsors</h3></div>
-                        {/* Sponsors */}
-                        <ul className="sponsors">
-                            <li className="slide-item"><figure className="image"><a href="#"><img src={Platinum1} alt="" /></a></figure></li>
-                            <li className="slide-item"><figure className="image"><a href="#"><img src={Platinum2} alt="" /></a></figure></li>
-                        </ul>
-                    </div>
-
-                    {/*  Sponsors Outer */}
-                    <div className="sponsors-outer wow fadeInUp">
-                        <div className="title-box"><h3>Gold Sponsors</h3></div>
-                        {/* Sponsors Carousel*/}
-                        <ul className="sponsor-carousel owl-carousel owl-theme">
-                            <li className="slide-item"><figure className="image"><a href="#"><img src={Gold1} alt="" /></a></figure></li>
-                            <li className="slide-item"><figure className="image"><a href="#"><img src={Gold2} alt="" /></a></figure></li>
-                            <li className="slide-item"><figure className="image"><a href="#"><img src={Gold3} alt="" /></a></figure></li>
-                            <li className="slide-item"><figure className="image"><a href="#"><img src={Gold4} alt="" /></a></figure></li>
-                            <li className="slide-item"><figure className="image"><a href="#"><img src={Gold5} alt="" /></a></figure></li>
-                        </ul>
-                    </div>
-
-                    {/*  Sponsors Outer */}
-                    <div className="sponsors-outer wow fadeInUp">
-                        <div className="title-box"><h3>Silver Sponsors</h3></div>
-                        {/* Sponsors*/}
-                        <ul className="sponsors">
-                            <li className="slide-item"><figure className="image"><a href="#"><img src={Silver1} alt="" /></a></figure></li>
-                            <li className="slide-item"><figure className="image"><a href="#"><img src={Silver2} alt="" /></a></figure></li>
-                            <li className="slide-item"><figure className="image"><a href="#"><img src={Silver3} alt="" /></a></figure></li>
-                        </ul>
-                    </div>
-
-                    <div className="bottom-box">
-                        <div className="btn-box"><a href="sponsor-detail.html" className="theme-btn btn-style-three">Become a Sponsor</a></div>
-                        <div className="text">Last Date: April 30, 2019</div>
-                    </div>
-                </div>
-            </section>
-            {/* End Clients Section */}
+            <Sponsor />
         </>
     );
 }

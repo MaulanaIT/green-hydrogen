@@ -12,7 +12,7 @@ export class PublicationItem extends Component {
 
                             </div>
                             <div className='col-8 ps-2 py-2 px-lg-4 py-lg-4'>
-                                <p className='fw-bold text-size-lg-4 text-black'>Hydrogen Renewable Energy</p>
+                                <p className='fw-bold text-size-4 text-size-lg-5 text-black'>Hydrogen Renewable Energy</p>
                                 <p className='text-black'>Contrary to popular belief, Lorem Ipsum 45 BC,
                                     making it over 2000 years old. Richard McClintock
                                 </p>

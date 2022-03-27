@@ -20,9 +20,9 @@ export default function GreenHydrogenIndonesiaOverview() {
                     <div className="content-column">
                         <div className="inner-column">
                             <div>
-                                <p className='fw-bold primary-color text-size-10 text-size-lg-15'>OVERVIEW <span className='text-size-5 text-size-lg-8'>GREEN HYDROGEN</span></p>
-                                <p className='fw-bold text-size-20 text-size-lg-25'>IN INDONESIA</p>
-                                <p>The main hydrogen production processes can be classified into electrolysis, photolysis, and thermolysis.</p>
+                                <p className='fw-bold primary-color text-center text-lg-start text-size-8 text-size-lg-10'>OVERVIEW <span className='text-size-5 text-size-lg-8'>GREEN HYDROGEN</span></p>
+                                <p className='fw-bold text-center text-lg-start text-size-20 text-size-lg-25'>IN INDONESIA</p>
+                                <p className='text-center text-lg-start'>The main hydrogen production processes can be classified into electrolysis, photolysis, and thermolysis.</p>
                             </div>
                         </div>
                     </div>
@@ -38,7 +38,7 @@ export default function GreenHydrogenIndonesiaOverview() {
             </section>
             {/* End Fluid Section One */}
 
-            <section className='d-flex flex-wrap justify-content-center min-vh-100 p-3 p-lg-5' style={{ background: `url(${BackgroundBanner1}) no-repeat`, backgroundSize: '100% 100%' }}>
+            <section className='d-flex flex-wrap justify-content-center banner-container p-3 p-lg-5' style={{ background: `url(${BackgroundBanner1}) no-repeat`, backgroundSize: '100% 100%' }}>
                 <div className='align-items-center col-12 col-lg-6 d-flex justify-content-center'>
                     <img src={IconBanner1} alt="" className='mh-100 mw-100' />
                 </div>
@@ -52,21 +52,17 @@ export default function GreenHydrogenIndonesiaOverview() {
                     <p>Hydrogen production through thermochemical processes essentially comprise the raw material, being either
                         from fossil or renewable sources, heat and catalysts so as to trigger chemical reactions for transforming the
                         raw material (for example, ethanol, natural gas, methanol, gasoline) into hydrogen.</p> <br />
-                    <p>The main thermochemical hydrogen production processes are: biomass gasification and pyrolysis, steam
+                    <p>The main thermochemical hydrogen production processes are: biomass gasification and pyrolysis, steam
                         reforming, partial oxidation, autothermal and oxidative reforming.</p>
                 </div>
             </section>
 
-            <section className='d-flex flex-wrap justify-content-center vh-100 p-3 p-lg-5' style={{ background: `url(${BackgroundBanner2}) no-repeat`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
+            <section className='d-flex flex-wrap justify-content-center banner-container p-3 p-lg-5' style={{ background: `url(${BackgroundBanner2}) no-repeat`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
                 <div className='align-items-center col-12 col-lg-6 d-flex justify-content-center p-5'>
                     <p className='fw-bold text-size-10 text-size-lg-15 text-black'>Text For Public</p>
                 </div>
                 <div className='col-12 col-lg-6 '></div>
             </section>
-
-            <MultipleBannder />
-            <MultipleBannder />
-            <MultipleBannder />
 
             <LatestNews />
 

@@ -119,14 +119,15 @@
 	.main-header,
 	.main-header.fixed-header,
 	.main-header .main-box{
-		position: relative !important;
-		background-color: #1e1f36;
+		padding: 10px;
 	}
 
 
 	.main-header .main-box{
-		padding: 10px 0;
-		background-color: #1e1f36;
+		align-items: center;
+		display: flex;
+		justify-content: space-between;
+		padding: 10px 20px;
 	}
 
 	.header-style-two,
@@ -386,9 +387,21 @@
 	}
 }
 
-@media only screen and (max-width: 992px){
+@media only screen and (max-width: 1279px){
 	.main-header .nav-outer .main-menu{
 		display: none !important;
+	}
+
+	.main-header.fixed-header .main-box {
+		padding: 10px 20px;
+	}
+
+	.main-header {
+		padding: 10px;
+	}
+
+	.main-header .nav-outer {
+		float: right;
 	}
 
 	.main-header .header-lower .nav-outer{
@@ -441,7 +454,7 @@
 	.countdown-section-two,
 	.clients-section-two,
 	.register-section{
-		padding: 70px 0;
+		padding: 40px 0;
 	}
 
 	.download-section,
@@ -461,7 +474,7 @@
 	.sidebar-page-container,
 	.main-footer .footer-content,
 	.about-section{
-		padding: 70px 0 20px;
+		padding: 40px 0px;
 	}
 
 	.about-section-four{
@@ -583,7 +596,7 @@
 	.fluid-section-one .image-column,
 	.fluid-section-one .content-column{
 		position: relative;
-		width: 100%;
+		/* width: 100%; */
 	}
 
 	.schedule-section-two .schedule-tabs .tab-btn{

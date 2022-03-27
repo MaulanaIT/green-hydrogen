@@ -10,28 +10,31 @@ import IconBanner2 from '../assets/green-hydrogen-indonesia-initiation/icon-bann
 import LatestNews from '../component/LatestNews';
 import Sponsor from '../component/Sponsor';
 import MultipleBannder from '../component/MultipleBannder';
+import Sidebar from '../component/Sidebar';
 
 export default function GreenHydrogenIndonesiaInitiationAction() {
     return (
         <>
             {/*  Fluid Section One */}
             <section className="fluid-section-one" style={{ background: `url(${BackgroundMainBanner}) no-repeat`, backgroundSize: '100% 100%' }}>
-                <div className="outer-box clearfix">
-                    {/*  Content Column */}
-                    <div className="content-column">
-                        <div className="inner-column">
-                            <div>
-                                <p className='fw-bold primary-color text-size-10 text-size-lg-15'>INITIATION</p>
-                                <p className='fw-bold text-size-20 text-size-lg-25'>AND ACTION</p>
-                                <p>The main hydrogen production processes can be classified into electrolysis, photolysis, and thermolysis.</p>
+                <div className='container-width h-100'>
+                    <div className="outer-box clearfix">
+                        {/*  Content Column */}
+                        <div className="content-column">
+                            <div className="inner-column">
+                                <div>
+                                    <p className='fw-bold primary-color text-center text-lg-start text-size-8 text-size-lg-10'>INITIATION</p>
+                                    <p className='fw-bold text-center text-lg-start text-size-20 text-size-lg-25'>AND ACTION</p>
+                                    <p className='text-center text-lg-start'>The main hydrogen production processes can be classified into electrolysis, photolysis, and thermolysis.</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    {/*  Content Column */}
-                    <div className="content-column ps-lg-5">
-                        <div className="inner-column">
-                            <div>
-                                <img src={IconMainBanner} alt="" className='h-100 mw-100' />
+                        {/*  Content Column */}
+                        <div className="content-column d-none d-lg-flex ps-lg-5">
+                            <div className="inner-column">
+                                <div>
+                                    <img src={IconMainBanner} alt="" className='h-100 mw-100' />
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -39,37 +42,22 @@ export default function GreenHydrogenIndonesiaInitiationAction() {
             </section>
             {/* End Fluid Section One */}
 
-            <section className='d-flex flex-wrap justify-content-center min-vh-100 p-3 p-lg-5' style={{ background: `url(${BackgroundBanner1}) no-repeat`, backgroundSize: '100% 100%' }}>
-                <div className='align-items-center col-12 col-lg-6 d-flex justify-content-center'>
-                    <img src={IconBanner1} alt="" className='mh-100 mw-100' />
-                </div>
-                <div className='col-12 col-lg-6 d-flex flex-column justify-content-center p-3 p-lg-5'>
-                    <p>Electrolytic hydrogen production processes involve the use of electric or thermal energy to trigger a
-                        chemical reaction for splitting water molecules into hydrogen and oxygen
-                        The main examples of electrolytic processes are water electrolysis (conventional process) and thermolysis
-                        (steam electrolysis).</p> <br />
-                    <p>Photolytic processes involve technologies that use the energy of light, and its main examples are the
-                        photobiological and photoelectrochemical systems.</p> <br />
-                    <p>Hydrogen production through thermochemical processes essentially comprise the raw material, being either
-                        from fossil or renewable sources, heat and catalysts so as to trigger chemical reactions for transforming the
-                        raw material (for example, ethanol, natural gas, methanol, gasoline) into hydrogen.</p> <br />
-                    <p>The main thermochemical hydrogen production processes are: biomass gasification and pyrolysis, steam
-                        reforming, partial oxidation, autothermal and oxidative reforming.</p>
-                </div>
-            </section>
+            <div className='container-article container-width'>
+                <Sidebar />
+                <div>
+                    <section className='container-article-section'>
+                        <p className='text-black'>So far, the potential for green hydrogen in Indonesia is quite significant. Still, the needs of the industry itself must review this, whether green hydrogen or blue hydrogen will be more suitable to be applied in the Indonesian climate. Five main pillars need to be developed as the primary considerations in the development of green hydrogen, namely energy efficiency, energy sufficiency, renewable energy, electrification, and green molecule (PtX). If appropriately done, four pillars can reduce around 80% of total carbon emissions.
+                            <br />
+                            In its development, Indonesia plans to launch hydrogen development until 2050 with the following scheme:</p>
+                    </section>
 
-            <section className='d-flex flex-wrap justify-content-center vh-100 p-3 p-lg-5' style={{ background: `url(${BackgroundBanner2}) no-repeat`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
-                <div className='align-items-center col-12 col-lg-6 d-flex justify-content-center p-5'>
-                    <p className='fw-bold text-size-10 text-size-lg-15'>Text For Public</p>
-                </div>                
-                <div className='align-items-center col-12 col-lg-6 d-flex justify-content-center'>
-                    <img src={IconBanner2} alt="" className='mh-100 mw-100' />
+                    <section className='container-article-section'>
+                        <div className='banner-container-image landscape'>
+                            <img src={IconBanner2} alt="" />
+                        </div>
+                    </section>
                 </div>
-            </section>
-
-            <MultipleBannder />
-            <MultipleBannder />
-            <MultipleBannder />
+            </div>
 
             <LatestNews />
 

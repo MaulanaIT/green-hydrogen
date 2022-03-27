@@ -1,212 +1,147 @@
-import React from 'react';
+import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
-
-import AboutEvent from '../assets/home/about-event.png';
-import Banner1 from '../assets/home/banner-1.png';
-import BackgroundLatestPublication from '../assets/background-latest-publication.png';
 
 import LatestNews from '../component/LatestNews';
 import Sponsor from '../component/Sponsor';
+import LatestPublicationItem from '../component/LatestPublicationItem';
+import { Translate } from '../component/helper';
 
-export default function Home() {
-    return (
-        <>
-            {/*  Fluid Section One */}
-            <section className="fluid-section-one">
-                <div className="outer-box clearfix">
+import AboutEvent from '../assets/home/about-event.png';
+import Banner1 from '../assets/home/banner-1.png';
+import BackgroundMainBanner from '../assets/home/banner-background.png';
+import BackgroundBanner2 from '../assets/home/banner-2.png';
+import IconBanner2 from '../assets/home/icon-banner-2.png';
 
-                    {/*  Content Column */}
-                    <div className="content-column left-side">
-                        <div className="inner-column left-side">
-                            <div>
-                                <h3>GREEN HYDROGEN</h3>
-                                <p className='fw-bold primary-color text-size-15 text-size-lg-25'>IS OUR FUTURE</p>
-                                <p>05 Januari - 13 Januari Hall Conference, Indonesia</p>
-                            </div>
+export class Home extends Component {
+    render() {
+        require('../css/home.css');
+
+        return (
+            <>
+                {/*  Fluid Section One */}
+                <section className="fluid-section-one">
+                    <div className="container-width h-100">
+                        <div className='social-media'>
+                            <ul>
+                                <li><Link to={'/'}><span className="fab fa-facebook-f"></span></Link></li>
+                                <li><Link to={'/'}><span className="fab fa-twitter"></span></Link></li>
+                                <li><Link to={'/'}><span className="fab fa-instagram"></span></Link></li>
+                                <li><Link to={'/'}><span className="fab fa-youtube"></span></Link></li>
+                            </ul>
                         </div>
-                    </div>
+                        <div className="banner-height outer-box clearfix">
 
-                    {/*  Content Column */}
-                    <div className="content-column right-side">
-                        <div className="inner-column right-side">
-                            <div>
-                                <h4>JOIN OUR</h4>
-                                <h3 className='primary-color'>IMPACT COMMUNITIES</h3>
-                                <p>Our impartial global network of nearly 100 national Member Committees connects energy leaders, industries, governments, innovators and experts across the world.</p>
-                                <button type='button' className='bg-white btn fw-bold mt-2 text-size-2 text-size-lg-2 text-black'>FIND OUT MORE</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            {/* End Fluid Section One */}
-
-            {/*  About Section  */}
-            <section className="about-section">
-                <div className="auto-container">
-                    <div className="d-flex flex-wrap">
-                        {/*  Content Column  */}
-                        <div className="content-column col-12 col-lg-6">
-                            <div className="inner-column">
-                                <div className="sec-title text-black">
-                                    <h2 className='m-0'>GREEN HYDROGEN</h2>
-                                    <h4>What is Green Hydrogen?</h4>
-                                    <p className='text-black'>Green Hydrogen Systems designs and manufactures efficient, standardised and modular electrolysers for the production of green hydrogen with renewable energy.
-                                        With no carbon emissions, it is the cleanest way of producing hydrogen. 
-                                        One major benefit of hydrogen is that it can be stored and transported for further use as necessary. The place of production can be different from the location where it is used again. So green hydrogen is a very versatile form of clean energy.</p>
-                                </div>
-                                <div className="btn-box"><a href="contact.html"><span className="btn primary-background-color text-white">Get Involved</span></a></div>
-                                <p className='m-0'></p>
-                            </div>
-                        </div>
-
-                        {/*  Image Column  */}
-                        <div className="image-column col-12 col-lg-6">
-                            <div className="d-flex justify-content-center wow fadeIn">
-                                <figure className="wow fadeIn"><img src={AboutEvent} alt="" /></figure>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            {/* End About Section  */}
-
-            <div className='banner-container home-banner-1'>
-                <div className='col-12 col-lg-7'>
-                    <img src={Banner1} alt="" />
-                </div>
-                <div className='col-12 col-lg-4 px-5'>
-                    <p className='fw-bold text-size-20 text-size-lg-25 text-black'>Hydrogen is Future System</p>
-                </div>
-            </div>
-
-            <div className='banner-container home-banner-2'>
-                <div className='col-12 col-lg-6'></div>
-                <div className='col-12 col-lg-6'>
-                    <p className='fw-bold text-size-15 text-size-lg-20 text-black text-center'>Text For Public</p>
-                </div>
-            </div>
-
-            {/*  Pricing Section */}
-            <section className="pricing-section-two home-latest-publication-background">
-                <div className="auto-container">
-                    <div className="sec-title style-two light text-center">
-                        <p className="fw-bold text-size-lg-5 m-0 secondary-color">See Our Publication</p>
-                        <h2 className='text-black'>Latest Publication</h2>
-                    </div>
-                    <div className='row row-y'>
-                        <div className='col-12 col-lg-4 wow fadeIn'>
-                            <div className='publication-card'>
-                                <div className='d-flex'>
-                                    <div className='bg-secondary col-4 pe-4'>
-
-                                    </div>
-                                    <div className='col-8 ps-2 py-2 px-lg-4 py-lg-4'>
-                                        <p className='fw-bold text-size-lg-4 text-black'>Hydrogen Renewable Energy</p>
-                                        <p className='text-black'>Contrary to popular belief, Lorem Ipsum 45 BC,
-                                            making it over 2000 years old. Richard McClintock
-                                        </p>
-                                        <p className='text-black'>#Hydrogen #Global</p>
-                                        <Link to={'/'} className='text-size-lg-3 fw-bold text-decoration-none text-black'>Read More</Link>
+                            {/*  Content Column */}
+                            <div className="content-column left-side">
+                                <div className="border-0 inner-column right-side">
+                                    <div>
+                                        <p className='fw-bold text-center text-lg-start text-size-10 text-size-lg-15'><Translate title={`GREEN HYDROGEN`} /></p>
+                                        <p className='fw-bold primary-color text-center text-lg-start text-size-20 text-size-lg-25'><Translate title={`IS OUR FUTURE`} /></p>
+                                        <p className='text-center text-lg-start'><Translate title={`05 Januari - 13 Januari Hall Conference, Indonesia`} /></p>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div className='col-12 col-lg-4 wow fadeIn'>
-                            <div className='publication-card'>
-                                <div className='d-flex'>
-                                    <div className='bg-secondary col-4 pe-4'>
 
-                                    </div>
-                                    <div className='col-8 ps-2 py-2 px-lg-4 py-lg-4'>
-                                        <p className='fw-bold text-size-lg-4 text-black'>Hydrogen Renewable Energy</p>
-                                        <p className='text-black'>Contrary to popular belief, Lorem Ipsum 45 BC,
-                                            making it over 2000 years old. Richard McClintock
-                                        </p>
-                                        <p className='text-black'>#Hydrogen #Global</p>
-                                        <Link to={'/'} className='text-size-lg-3 fw-bold text-decoration-none text-black'>Read More</Link>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className='col-12 col-lg-4 wow fadeIn'>
-                            <div className='publication-card'>
-                                <div className='d-flex'>
-                                    <div className='bg-secondary col-4 pe-4'>
-
-                                    </div>
-                                    <div className='col-8 ps-2 py-2 px-lg-4 py-lg-4'>
-                                        <p className='fw-bold text-size-lg-4 text-black'>Hydrogen Renewable Energy</p>
-                                        <p className='text-black'>Contrary to popular belief, Lorem Ipsum 45 BC,
-                                            making it over 2000 years old. Richard McClintock
-                                        </p>
-                                        <p className='text-black'>#Hydrogen #Global</p>
-                                        <Link to={'/'} className='text-size-lg-3 fw-bold text-decoration-none text-black'>Read More</Link>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className='col-12 col-lg-4 wow fadeIn'>
-                            <div className='publication-card'>
-                                <div className='d-flex'>
-                                    <div className='bg-secondary col-4 pe-4'>
-
-                                    </div>
-                                    <div className='col-8 ps-2 py-2 px-lg-4 py-lg-4'>
-                                        <p className='fw-bold text-size-lg-4 text-black'>Hydrogen Renewable Energy</p>
-                                        <p className='text-black'>Contrary to popular belief, Lorem Ipsum 45 BC,
-                                            making it over 2000 years old. Richard McClintock
-                                        </p>
-                                        <p className='text-black'>#Hydrogen #Global</p>
-                                        <Link to={'/'} className='text-size-lg-3 fw-bold text-decoration-none text-black'>Read More</Link>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className='col-12 col-lg-4 wow fadeIn'>
-                            <div className='publication-card'>
-                                <div className='d-flex'>
-                                    <div className='bg-secondary col-4 pe-4'>
-
-                                    </div>
-                                    <div className='col-8 ps-2 py-2 px-lg-4 py-lg-4'>
-                                        <p className='fw-bold text-size-lg-4 text-black'>Hydrogen Renewable Energy</p>
-                                        <p className='text-black'>Contrary to popular belief, Lorem Ipsum 45 BC,
-                                            making it over 2000 years old. Richard McClintock
-                                        </p>
-                                        <p className='text-black'>#Hydrogen #Global</p>
-                                        <Link to={'/'} className='text-size-lg-3 fw-bold text-decoration-none text-black'>Read More</Link>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className='col-12 col-lg-4 wow fadeIn'>
-                            <div className='publication-card'>
-                                <div className='d-flex'>
-                                    <div className='bg-secondary col-4 pe-4'>
-
-                                    </div>
-                                    <div className='col-8 ps-2 py-2 px-lg-4 py-lg-4'>
-                                        <p className='fw-bold text-size-lg-4 text-black'>Hydrogen Renewable Energy</p>
-                                        <p className='text-black'>Contrary to popular belief, Lorem Ipsum 45 BC,
-                                            making it over 2000 years old. Richard McClintock
-                                        </p>
-                                        <p className='text-black'>#Hydrogen #Global</p>
-                                        <Link to={'/'} className='text-size-lg-3 fw-bold text-decoration-none text-black'>Read More</Link>
+                            {/*  Content Column */}
+                            <div className="content-column right-side">
+                                <div className="inner-column right-side">
+                                    <div className='text-center text-lg-start'>
+                                        <p className='fw-bold text-center text-lg-start text-size-10 text-size-lg-15'><Translate title={`JOIN OUR`} /></p>
+                                        <p className='fw-bold primary-color text-center text-lg-start text-size-10 text-size-lg-15'><Translate title={`IMPACT COMMUNITIES`} /></p>
+                                        <p className='text-center text-lg-start'><Translate title={`Our impartial global network of nearly 100 national Member Committees connects energy leaders, industries, governments, innovators and experts across the world.`} /></p>
+                                        <button type='button' className='bg-white btn fw-bold mt-2 text-size-2 text-size-lg-2 text-black'><Translate title={`FIND OUT MORE`} /></button>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </section>
-            {/* End Pricing Section */}
+                </section>
+                {/* End Fluid Section One */}
 
-            <LatestNews />
+                {/*  About Section  */}
+                <section className="about-section">
+                    <div className="container-width">
+                        <div className="align-items-center d-flex flex-wrap flex-row-reverse flex-lg-row justify-content-center">
+                            {/*  Content Column  */}
+                            <div className="content-column col-12 col-lg-6 pe-lg-5">
+                                <div className="inner-column">
+                                    <div className="sec-title text-black">
+                                        <p className='fw-bold text-black text-size-15 text-size-lg-20'><Translate title={`GREEN HYDROGEN`} /></p>
+                                        <p className='fw-bold text-black text-size-6 text-size-lg-8'><Translate title={`What is Green Hydrogen?`} /></p>
+                                        <p className='text-black'><Translate title={`Green Hydrogen Systems designs and manufactures efficient, standardised and modular electrolysers for the production of green hydrogen with renewable energy. With no carbon emissions, it is the cleanest way of producing hydrogen.`} /></p>
+                                    </div>
+                                    <div className="button-involved">
+                                        <div className='container'>
+                                            <a href="#"><Translate title={`Get Involved`} /></a>
+                                        </div>
+                                    </div>
+                                    <p className='m-0'></p>
+                                </div>
+                            </div>
 
-            <div className='align-items-center banner-container d-flex fw-bold justify-content-center text-black text-size-20 text-size-lg-20'>Embeded Social Media</div>
+                            {/*  Image Column  */}
+                            <div className="col-12 col-lg-6 text-center">
+                                <img src={AboutEvent} alt="" className='w-100' style={{maxWidth: '500px'}} />
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                {/* End About Section  */}
 
-            <Sponsor />
-        </>
-    );
+                <section className='container-width d-flex flex-wrap gap-3 py-5'>
+                    <div className='align-items-center banner-container-image col-12 col-lg-7 d-flex justify-content-center'>
+                        <img src={Banner1} alt="" className='w-100' />
+                    </div>
+                    <div className='col-12 col-lg-4 d-flex flex-column justify-content-center'>
+                        <p className='fw-bold text-size-10 text-size-lg-15 text-black'><Translate title={`Hydrogen is Future System`} /></p>
+                        <p className='text-black'><Translate title={`One major benefit of hydrogen is that it can be stored and transported for further use as necessary. The place of production can be different from the location where it is used again. So green hydrogen is a very versatile form of clean energy.`} /></p>
+                    </div>
+                </section>
+
+                <section className='position-relative' style={{ background: `url(${BackgroundBanner2}) no-repeat`, backgroundSize: 'cover', backgroundPosition: 'right' }}>
+                    <div className='container-width d-flex gap-5'>
+                        <div className='col-7 d-lg-block d-none py-5 text-center'>
+                            <img className='h-100' src={IconBanner2} />
+                        </div>
+                        <div className='container-width col-12 col-lg-5 py-5 text-center'>
+                            <p className='fw-bold pb-4 text-size-10 text-size-lg-20 text-center text-lg-start'><Translate title={`Accelerating the global energy transition with green hydrogen`} /></p>
+                            <p className='text-size-5 text-size-lg-8 text-center text-lg-start'><Translate title={`We are committed to be on the forefront of this energy transition`} /></p>
+                            <div className="button-our-activity mt-4 secondary-color">
+                                <div className='container'>
+                                    <a href="#"><Translate title={`Our Activity`} /></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                {/*  Pricing Section */}
+                <section className="pricing-section-two home-latest-publication-background">
+                    <div className="container-width">
+                        <div className="sec-title style-two light text-center">
+                            <p className="fw-bold text-size-lg-5 m-0 secondary-color"><Translate title={`See Our Publication`} /></p>
+                            <h2 className='text-black'><Translate title={`Latest Publication`} /></h2>
+                        </div>
+                        <div className='row row-y'>
+                            <LatestPublicationItem />
+                            <LatestPublicationItem />
+                            <LatestPublicationItem />
+                            <LatestPublicationItem />
+                            <LatestPublicationItem />
+                            <LatestPublicationItem />
+                        </div>
+                    </div>
+                </section>
+                {/* End Pricing Section */}
+
+                <LatestNews />
+
+                <div className='align-items-center banner-container d-flex fw-bold justify-content-center p-5 text-black text-center text-size-15 text-size-lg-20'>Embeded Social Media</div>
+
+                <Sponsor />
+            </>
+        )
+    }
 }
+
+export default Home

@@ -38,7 +38,7 @@ if ($('.main-header li.dropdown ul').length) {
 }
 
 //Mobile Nav Hide Show
-if ($('.mobile-menu').length) {
+/* if ($('.mobile-menu').length) {
 
 	var mobileMenuContent = $('.main-header .nav-outer .main-menu .navigation').html();
 	$('.mobile-menu').append('<div class="close-btn"><span class="icon flaticon-cancel-music"></span></div>');
@@ -60,7 +60,7 @@ if ($('.mobile-menu').length) {
 	$('.mobile-menu .menu-backdrop,.mobile-menu .close-btn').on('click', function () {
 		$('body').removeClass('mobile-menu-visible');
 	});
-}
+} */
 
 //Shedule Block
 if ($('.schedule-block').length) {
