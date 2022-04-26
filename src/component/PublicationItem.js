@@ -5,7 +5,7 @@ export class PublicationItem extends Component {
     render() {
         return (
             <>
-                <div className='col-12 col-lg-4 wow fadeIn'>
+                <div className='col-12 col-lg-4 wow fadeInUp'>
                     <div className='publication-card'>
                         <div className='d-flex'>
                             <div className='bg-secondary col-4 pe-4'>

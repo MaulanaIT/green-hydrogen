@@ -1,9 +1,12 @@
 :root {
     --primary-color: #6EC624;
     --secondary-color: #2DA82B;
+    --secondary-color-disabled: rgba(45, 168, 43, 0.6);
     --third-color: #020447;
     --fourth-color: #17BD63;
     --stakeholder-item-background: url('../assets/latest-news.png');
+    --line-clamp: 3;
+    --background-pin-region: red;
 }
 
 ::-webkit-calendar-picker-indicator {
@@ -61,6 +64,14 @@ Not supports in Firefox and IE */
     background-color: var(--secondary-color) !important;
 }
 
+.secondary-hover-color:hover {
+    background-color: #0f750d !important;
+}
+
+.secondary-background-color-disabled {
+    background-color: var(--secondary-color-disabled) !important;
+}
+
 .third-background-color {
     background: var(--third-color) !important;
 }
@@ -87,6 +98,10 @@ Not supports in Firefox and IE */
 
 .fourth-color {
     color: var(--fourth-color) !important;
+}
+
+.text-secondary * {
+    color: rgb(108, 117, 125);
 }
 
 /* ------------------------------------------------ */
@@ -175,10 +190,11 @@ Not supports in Firefox and IE */
 .item {
     align-items: center;
     display: flex;
+    flex-direction: column;
     position: absolute;
     background: black;
     width: 170px;
-    height: 180px;
+    height: 200px;
     justify-content: center;
     line-height: 12px;
     font-size: 10px;
@@ -188,6 +204,13 @@ Not supports in Firefox and IE */
     color: black;
     opacity: 0.95;
     border-radius: 10px;
+}
+
+.item>.title {
+    color: black;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 16px;
 }
 
 .a {
@@ -230,7 +253,8 @@ Not supports in Firefox and IE */
     background: white;
 }
 
-.next, .prev {
+.next,
+.prev {
     position: absolute;
     top: 50%;
     padding: 0.5em 1em;
@@ -260,6 +284,11 @@ Not supports in Firefox and IE */
         color: black;
         opacity: 0.95;
         border-radius: 10px;
+    }
+
+    .item>.title {
+        font-size: 20px;
+        margin-bottom: 14px;
     }
 
     .a {
@@ -302,7 +331,8 @@ Not supports in Firefox and IE */
         background: white;
     }
 
-    .next, .prev {
+    .next,
+    .prev {
         position: absolute;
         top: 50%;
         padding: 0.25em 0.5em;
@@ -331,6 +361,11 @@ Not supports in Firefox and IE */
         color: black;
         opacity: 0.95;
         border-radius: 10px;
+    }
+
+    .item>.title {
+        font-size: 16px;
+        margin-bottom: 12px;
     }
 
     .a {
@@ -373,7 +408,8 @@ Not supports in Firefox and IE */
         background: white;
     }
 
-    .next, .prev {
+    .next,
+    .prev {
         position: absolute;
         top: 50%;
         padding: 0.25em 0.5em;
@@ -385,7 +421,8 @@ Not supports in Firefox and IE */
     }
 }
 
-.next:hover, .prev:hover {
+.next:hover,
+.prev:hover {
     color: #000000;
 }
 
@@ -415,10 +452,17 @@ Not supports in Firefox and IE */
 
 .background-signup button {
     background: linear-gradient(90deg, rgba(110, 198, 38, 1) 0%, rgba(83, 145, 57, 1) 25%, rgba(58, 97, 75, 1) 100%);
+    background-position: 0%;
+    background-size: 300%;
     border-radius: 8px;
     color: white;
     padding: 6px 28px;
+    transition: 0.2s ease-in-out;
     width: 100%;
+}
+
+.background-signup button:hover {
+    background-position: 30%;
 }
 
 .background-join {
@@ -483,6 +527,23 @@ Not supports in Firefox and IE */
     min-height: 800px;
 }
 
+.button-event {
+    align-items: center;
+    background-color: transparent;
+    border-radius: 8px;
+    color: red;
+    cursor: pointer;
+    display: flex;
+    font-weight: bold;
+    justify-content: center;
+    transition: 0.2s ease-in-out;
+}
+
+.button-event:hover {
+    background-color: red;
+    color: white;
+}
+
 .button-multilanguage {
     align-items: center;
     color: white;
@@ -523,6 +584,20 @@ Not supports in Firefox and IE */
     color: black;
 }
 
+.button-read-story {
+    background-color: var(--primary-color);
+    border-radius: 8px;
+    color: white;
+    font-weight: bold;
+    padding: 10px 24px;
+    transition: 0.2s ease-in-out;
+}
+
+.button-read-story:hover {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
 .button-join-us {
     align-items: center;
     background: linear-gradient(45deg, rgba(0, 155, 76, 1) 0%, rgba(6, 97, 87, 1) 100%);
@@ -530,6 +605,13 @@ Not supports in Firefox and IE */
     display: flex;
     height: 50px;
     margin: 0;
+}
+
+.button-step-container {
+    display: grid;
+    gap: 10px;
+    grid-template-columns: repeat(3, 1fr);
+    width: 100%;
 }
 
 .company-card-join-us {
@@ -540,17 +622,85 @@ Not supports in Firefox and IE */
     width: 100%;
 }
 
+.company-directory-upload-photo {
+    align-items: center;
+    border: 4px solid var(--primary-color);
+    border-radius: 4px;
+    display: flex;
+    height: 160px;
+    justify-content: center;
+    width: 100%;
+}
+
+.container-image {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.container-image > img {
+    min-height: 100%;
+    min-width: 100%;
+    object-fit: cover;
+}
+
+.content-event-item {
+    max-height: 0px;
+    overflow: hidden;
+    transition: 0.4s;
+    width: 100%;
+}
+
+.content-event-item-toggle {
+    align-items: center;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    padding: 12px;
+    position: absolute;
+    right: 12px;
+    top: 12px;
+    transform: rotate(0deg);
+    transition: 0.4s;
+    width: auto;
+}
+
+.content-event-item-toggle.active {
+    color: var(--secondary-color);
+    transform: rotate(180deg);
+}
+
+.content-event-item.active {
+    max-height: 500px;
+    transition: 0.4s;
+}
+
 .container-article {
-    display: grid;
-    grid-template-columns: 2fr 4fr;
-    grid-template-rows: 1fr;
-    gap: 20px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    min-height: 680px;
     padding: 20px 0px;
+}
+
+.container-article .button-tag {
+    border: 3px solid var(--primary-color);
+    border-radius: 24px;
+    color: black;
+    cursor: pointer;
+    padding: 4px 16px;
+}
+
+.container-article .button-tag:hover {
+    background: var(--primary-color);
+    color: white;
 }
 
 .container-width {
     margin: auto;
-    max-width: 1100px;
+    max-width: 1279px;
     position: relative;
 }
 
@@ -575,16 +725,75 @@ Not supports in Firefox and IE */
     align-items: center;
     border: 2px solid #aaaaaa;
     border-radius: 50%;
+    cursor: pointer;
     display: flex;
     font-size: 28px;
     height: 50px;
     justify-content: center;
     padding: 0px;
+    transition: 0.4s ease-in-out;
     width: 50px;
+}
+
+.contact-us-icon-container * {
+    transition: 0.4s ease-in-out;
+}
+
+.contact-us-icon-container:hover {
+    background-color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+}
+
+.contact-us-icon-container:hover * {
+    color: white;
 }
 
 .cursor-pointer {
     cursor: pointer;
+}
+
+.detail-project {
+    background: white;
+    border-left: 1px solid #dddddd;
+    height: auto;
+    position: absolute;
+    left: -300px;
+    top: 12px;
+    transition: 0.6s ease-in-out;
+    width: 300px;
+    z-index: 401;
+}
+
+.detail-project .close {
+    align-items: center;
+    background-color: white;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    height: 24px;
+    justify-content: center;
+    right: -8px;
+    margin: 0px;
+    position: absolute;
+    top: -8px;
+    width: 24px;
+    z-index: 1;
+}
+
+.detail-project .close > * {
+    color: var(--primary-color);
+    font-size: 14px;
+}
+
+.detail-project.active {
+    left: 12px;
+}
+
+.error-input {
+    color: red;
+    font-size: 14px;
+    font-weight: bold;
 }
 
 .green-indonesia-overview-item {
@@ -629,6 +838,11 @@ Not supports in Firefox and IE */
     width: 100%;
 }
 
+.green-overview-chart-container {
+    height: 400px;
+    width: 460px;
+}
+
 .home-banner-2 {
     background: url(../assets/home/banner-2.png) no-repeat;
     background-size: cover;
@@ -666,6 +880,14 @@ Not supports in Firefox and IE */
     white-space: nowrap;
 }
 
+.hover-text-button {
+    color: #3f4161;
+}
+
+.hover-text-button:hover {
+    color: var(--primary-color) !important;
+}
+
 .icon-input-field-filter {
     align-items: center;
     color: white;
@@ -690,10 +912,10 @@ Not supports in Firefox and IE */
     align-items: center;
     color: #65C1BE;
     display: flex;
-    height: 100%;
+    height: auto;
     left: 12px;
     position: absolute;
-    top: 0;
+    top: 12px;
 }
 
 .input-field-contact-us {
@@ -705,23 +927,27 @@ Not supports in Firefox and IE */
 
 .input-field-filter {
     background: var(--secondary-color);
-    border-radius: 12px;
+    border-radius: 4px;
     padding: 4px 12px 4px 26px;
     width: 100%;
 }
 
 .input-field-search {
     background: var(--primary-color);
-    border-radius: 12px;
+    border-radius: 4px;
     padding: 8px 12px 8px 36px;
     width: 100%;
 }
 
 .input-field-join-us {
-    border: 4px solid var(--primary-color);
+    border: 3px solid var(--primary-color);
     border-radius: 4px;
-    padding: 4px 12px 4px 24px;
+    padding: 4px 12px 4px 32px;
     width: 100%;
+}
+
+.input-field-join-us:invalid {
+    border: 3px solid red;
 }
 
 .introduction-card-item {
@@ -734,6 +960,30 @@ Not supports in Firefox and IE */
     padding: 40px;
 }
 
+.leaflet-div-icon {
+    background: transparent !important;
+    border: none !important;
+    height: auto !important;
+    width: auto !important;
+}
+
+.main-search {
+    padding-top: 0 !important;
+    position: absolute;
+    right: 0px;
+    top: 70%;
+    transform: translate(0%, -50%);
+    width: 300px;
+}
+
+.main-search > input {
+    background-color: transparent;
+    border: 2px solid white;
+    border-radius: 4px;
+    padding: 8px 12px 8px 36px;
+    width: 100%;
+}
+
 .max-vh-100 {
     max-height: 100vh;
 }
@@ -743,10 +993,11 @@ Not supports in Firefox and IE */
 }
 
 .navbar-logo {
-    height: 50px;
+    height: 48px;
 }
 
 .news-image {
+    border-radius: 12px;
     position: relative;
 }
 
@@ -757,7 +1008,7 @@ Not supports in Firefox and IE */
 .news-image::before {
     background: var(--primary-color);
     color: white;
-    content: 'Business';
+    content: attr(data-category);
     left: 20px;
     padding: 4px 16px;
     position: absolute;
@@ -811,10 +1062,151 @@ Not supports in Firefox and IE */
     padding: 12px;
 }
 
-.publication-card {
-    border: 4px solid var(--primary-color);
+.pagination-list {
+    align-items: center;
+    background-color: transparent;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    height: 64px;
+    width: 56px;
+}
+
+.pagination-list.active {
+    background-color: var(--primary-color);
+}
+
+.pagination-list > .pagination-item {
+    color: black;
+    margin-bottom: 0;
+}
+
+.pagination-list:not(.active):hover > .pagination-item {
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+.pagination-list.active > .pagination-item {
+    color: white;
+    font-weight: bold;
+}
+
+.pin-marker {
+    align-items: center;
+    cursor: pointer;
+    display: flex;
+    font-weight: bold;
+    justify-content: center;
+    position: relative;
+    text-align: center;
+}
+
+.pin-marker > svg {
+    align-items: center;
+    color: red;
+    cursor: pointer;
+    display: flex;
+    font-size: 24px;
+    justify-content: center;
+    left: 50%;
+    position: relative;
+    top: -100%;
+    transform: translate(-50%, -50%);
+}
+
+.pin-marker > .name {
+    background-color: white;
+    border: 1px solid red;
+    border-radius: 4px;
+    color: red;
+    display: none;
+    font-size: 12px;
+    font-weight: bold;
+    left: 50%;
+    letter-spacing: -1px;
+    padding: 0px 8px;
+    position: absolute;
+    top: calc(100% + 8px);
+    transform: translate(-50%, -50%);
+    white-space: nowrap;
+}
+
+.pin-marker:hover > .name {
+    display: block;
+    z-index: 100;
+}
+
+.pin-region {
+    align-items: center;
+    background-color: var(--background-pin-region);
+    border-radius: 50%;
+    box-shadow: 0px 0px 6px 2px var(--background-pin-region);
+    cursor: pointer;
+    display: flex;
+    font-weight: bold;
+    height: 24px;
+    justify-content: center;
+    position: relative;
+    text-align: center;
+    width: 24px;
+}
+
+.pin-region > .name {
+    color: black;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: -1px;
+    white-space: nowrap;
+}
+
+.popup-response-container {
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: none;
+    height: 100vh;
+    justify-content: center;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    z-index: 10;
+}
+
+.popup-response-container.active {
+    display: flex;
+}
+
+.popup-response-container > .card {
+    background-color: white;
+    border: 1px solid var(--primary-color);
     border-radius: 12px;
-    padding: 12px;
+    padding: 24px;
+}
+
+.popup-response-container > .card > * {
+    color: black;
+    font-size: 16px;
+    margin-bottom: 0;
+}
+
+.publication-card {
+    background-color: white;
+    border-radius: 8px;
+}
+
+.publication-card > * > * > .read-more {
+    background-color: var(--primary-color);
+    border-radius: 4px;
+    color: white;
+    display: inline-block;
+    font-weight: bold;
+    margin-top: 16px;
+    padding: 4px 12px;
+    transition: 0.2s ease-in-out;
+}
+
+.publication-card > * > * > .read-more:hover {
+    background-color: var(--secondary-color);
 }
 
 .publication-container {
@@ -824,17 +1216,23 @@ Not supports in Firefox and IE */
 }
 
 .publication-video-container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: 1fr;
-    gap: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
 }
 
-.publication-video-item .video {
-    background: gainsboro;
+.publication-video-item {
+    background: white;
     border-radius: 12px;
-    height: 180px;
-    margin-bottom: 20px;
+    min-width: calc(33% - 10px);
+}
+
+.publication-video-item > .video {
+    background: white;
+    border-radius: 12px;
+    height: 280px;
+    width: 100%;
 }
 
 .rounded-50 {
@@ -843,6 +1241,10 @@ Not supports in Firefox and IE */
 
 .row-y {
     --bs-gutter-y: 1.5rem !important;
+}
+
+#signup-form {
+    flex: 1;
 }
 
 .stakeholder-container {
@@ -883,7 +1285,7 @@ Not supports in Firefox and IE */
 }
 
 .stakeholder-item-content::before {
-    background: linear-gradient(0deg, rgba(9,15,79,0.5) 0%, rgba(6,13,81,1) 100%);
+    background: linear-gradient(0deg, rgba(9, 15, 79, 0.5) 0%, rgba(6, 13, 81, 1) 100%);
     clip-path: polygon(0% 0%, 0% 100%, 100% 80%, 100% 0%);
     content: '';
     height: 300px;
@@ -893,11 +1295,11 @@ Not supports in Firefox and IE */
     width: 100%;
 }
 
-.stakeholder-item-content > .header {
+.stakeholder-item-content>.header {
     height: 280px;
 }
 
-.stakeholder-item-content > .header > .tag-container {
+.stakeholder-item-content>.header>.tag-container {
     align-items: center;
     display: flex;
     flex-wrap: wrap;
@@ -905,7 +1307,7 @@ Not supports in Firefox and IE */
     margin-bottom: 20px;
 }
 
-.stakeholder-item-content > .header > .tag-container > .tag {
+.stakeholder-item-content>.header>.tag-container>.tag {
     background: #5E6592;
     border-radius: 24px;
     color: white;
@@ -913,7 +1315,7 @@ Not supports in Firefox and IE */
     position: relative;
 }
 
-.stakeholder-item-content > .logo {
+.stakeholder-item-content>.logo {
     height: 96px;
     left: 20px;
     position: absolute;
@@ -923,43 +1325,69 @@ Not supports in Firefox and IE */
     z-index: 2;
 }
 
-.stakeholder-item-content > .logo > img {
+.stakeholder-item-content>.logo>img {
     border-radius: 50%;
     box-shadow: 0px 0px 32px;
     width: 100%;
+}
+
+.step {
+    background: var(--primary-color);
+    border-radius: 8px;
+    padding: 8px 24px;
+    width: 100%;
+}
+
+.step.active {
+    background: var(--secondary-color);
 }
 
 .text-banner {
     position: absolute;
 }
 
-.text-black {
+.text-black,
+.text-black * {
     color: #3f4161 !important;
 }
 
+.text-clamp {
+    display: -webkit-box;
+    line-clamp: var(--line-clamp);
+    -webkit-line-clamp: var(--line-clamp);
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
 .text-grey {
-    color: #616977 Im !important;
+    color: #616977 !important;
 }
 
 .text-justify {
     text-align: justify;
 }
 
+.text-size-lg-0 {
+    font-size: 10px !important;
+    line-height: 14px;
+    transition: 0.4s;
+}
+
 .text-size-lg-1 {
     font-size: 12px !important;
-    line-height: 20px;
+    line-height: 16px;
     transition: 0.4s;
 }
 
 .text-size-lg-2 {
     font-size: 14px !important;
-    line-height: 20px;
+    line-height: 18px;
     transition: 0.4s;
 }
 
 .text-size-lg-3 {
     font-size: 16px !important;
-    line-height: 22px;
+    line-height: 20px;
     transition: 0.4s;
 }
 
@@ -1125,6 +1553,14 @@ Not supports in Firefox and IE */
     transition: 0.4s;
 }
 
+ul, ol {
+    padding: 0;
+}
+
+ol > li {
+    list-style: disc;
+}
+
 .vh-50 {
     height: 50vh;
 }
@@ -1139,7 +1575,7 @@ Not supports in Firefox and IE */
 
 @media only screen and (max-width: 991px) {
     .background-join {
-        border-radius: 0px 0px 12px 12px;
+        border-radius: 0px;
     }
 
     .background-join-video {
@@ -1189,7 +1625,25 @@ Not supports in Firefox and IE */
 
     .container-article {
         display: block;
-        padding: 20px;
+        padding: 20px 0px !important;
+    }
+
+    .green-overview-chart-container {
+        height: 400px;
+        width: 100%;
+    }
+
+    .fluid-section-two {
+        height: 270px
+    }
+
+    .main-search {
+        padding-top: 0 !important;
+        position: absolute;
+        right: 50%;
+        top: 85%;
+        transform: translate(50%, -50%);
+        width: 300px;
     }
 
     .news-image::before {
@@ -1218,19 +1672,24 @@ Not supports in Firefox and IE */
         position: relative;
     }
 
+    .text-size-0 {
+        font-size: 10px !important;
+        line-height: 14px;
+    }
+
     .text-size-1 {
         font-size: 12px !important;
-        line-height: 20px;
+        line-height: 16px;
     }
 
     .text-size-2 {
         font-size: 14px !important;
-        line-height: 20px;
+        line-height: 18px;
     }
 
     .text-size-3 {
         font-size: 16px !important;
-        line-height: 22px;
+        line-height: 20px;
     }
 
     .text-size-4 {
@@ -1371,7 +1830,12 @@ Not supports in Firefox and IE */
 
 @media only screen and (max-width: 1279px) {
     .container-width {
-        padding: 20px;
+        padding: 10px 0px;
+    }
+
+    .px-20 {
+        padding-left: 20px !important;
+        padding-right: 20px !important;
     }
 }
 

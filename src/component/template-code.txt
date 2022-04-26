@@ -1,0 +1,4 @@
+1 : Main Home
+2 : Left content with button, right image
+3 : left content with logo and description list, right video embed
+4 : Left image, right content with button with background

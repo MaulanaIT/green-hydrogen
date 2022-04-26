@@ -4,6 +4,20 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
+    position: relative;
+}
+
+.container.scrollable {
+    position: fixed;
+    top: 100px;
+    width: 384px;
+}
+
+.container.stick_bot {
+    bottom: 50px;
+    position: absolute;
+    top: auto;
+    width: 384px;
 }
 
 .bottom-container {
@@ -104,7 +118,7 @@
     width: 100%;
 }
 
-@media only screen and (max-width: 1023px) {
+@media only screen and (max-width: 991px) {
     .container {
         display: none;
     }

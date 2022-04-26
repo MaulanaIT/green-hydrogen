@@ -1,18 +1,92 @@
 import React, { Component } from 'react'
-import BackgroundMainBanner from '../assets/green-hydrogen-indonesia-potential/background-main-banner.png';
-import BackgroundBanner1 from '../assets/green-hydrogen-indonesia-potential/background-banner-1.png';
-import BackgroundBanner2 from '../assets/green-hydrogen-indonesia-potential/background-banner-2.png';
-import IconMainBanner from '../assets/green-hydrogen-indonesia-potential/icon-main-banner.png';
-import IconBanner1 from '../assets/green-hydrogen-indonesia-potential/icon-banner-1.png';
 
 import LatestNews from '../component/LatestNews';
-import Sponsor from '../component/Sponsor';
-import MultipleBannder from '../component/MultipleBannder';
 import Sidebar from '../component/Sidebar';
+import { ConfigAPI, StorageURL } from '../component/helper';
+import axios from 'axios';
+import i18next from 'i18next';
+import { Link } from 'react-router-dom';
 
 export class GreenHydrogenIndonesiaPotential extends Component {
 
+    state = {
+        htmlContent: [],
+        htmlContentArticle: []
+    }
+
     componentDidMount() {
+        axios.get(`https://admin.greenhydrogen.my.id/api/content/${i18next.language}/menu/${i18next.language == 'id' ? 23 : 24}`, ConfigAPI()).then(response => {
+            let data = response.data;
+
+            let htmlContent = [];
+            let htmlContentArticle = [];
+
+            if (data) {
+                data.map((item, index) => {
+                    if (item.order == '0') {
+                        htmlContent.push(
+                            <React.Fragment key={index}>
+                                <div className='position-absolute w-100'>
+                                    <div className='container-width p-0 text-center text-lg-end'>
+                                        <canvas id="canvasOne" width={800} height={800}></canvas>
+                                    </div>
+                                </div>
+                                <div className="fluid-section-one" style={{ background: `url(${StorageURL(item?.content?.background_2_picture_1)}) no-repeat`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
+                                    <div className='container-width h-100'>
+                                        <div className="outer-box clearfix">
+                                            {/*  Content Column */}
+                                            <div className="content-column">
+                                                <div className="inner-column">
+                                                    <div>
+                                                        <p className='fw-bold primary-color text-center text-lg-start text-size-10 text-size-lg-15'>{item?.content?.left_title_1}</p>
+                                                        <p className='fw-bold text-center text-lg-start text-size-20 text-size-lg-25'>{item?.content?.left_title_2}</p>
+                                                        <p className='text-center text-lg-start' dangerouslySetInnerHTML={{ __html: item?.content?.left_description_1 }}></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {/*  Content Column */}
+                                            <div className="content-column d-none d-lg-flex">
+                                                <div className="inner-column">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </React.Fragment>
+                        );
+                    } else if (item.order == '1') {
+                        htmlContentArticle.push(
+                            <React.Fragment key={index}>
+                                <div className='container-article-section px-20'>
+                                    <p className='text-black' dangerouslySetInnerHTML={{ __html: item?.content?.middle_description_1 }}></p>
+                                </div>
+
+                                <div className='container-article-section'>
+                                    <div className='banner-container-image landscape'>
+                                        <img src={StorageURL(item?.content?.middle_picture_1)} alt="" />
+                                    </div>
+                                </div>
+                            </React.Fragment>
+                        )
+                    } else if (item.order == '2') {
+                        htmlContentArticle.push(
+                            <div key={index} className='d-flex gap-3'>
+                                <Link to={`${item?.content?.left_button_link_1}`} className='button-tag'>{item?.content?.left_button_1}</Link>
+                                <Link to={`${item?.content?.left_button_link_1}`} className='button-tag'>{item?.content?.left_button_2}</Link>
+                                <Link to={`${item?.content?.left_button_link_1}`} className='button-tag'>{item?.content?.left_button_3}</Link>
+                            </div>
+                        )
+                    }
+                });
+            }
+
+            this.setState({ htmlContent: htmlContent, htmlContentArticle: htmlContentArticle }, () => {
+                if (document.getElementById("canvasOne")) this.GenerateEffect();
+            });
+        });
+    }
+
+    GenerateEffect = () => {
         var sphereRad = 420;
         var radius_sp = 1;
         //for debug messages
@@ -157,7 +231,7 @@ export class GreenHydrogenIndonesiaPotential extends Component {
             cosAngle = Math.cos(turnAngle);
 
             //background fill
-            context.fillStyle = "#000000";
+            context.fillStyle = "#1f0733";
             context.fillRect(0, 0, displayWidth, displayHeight);
 
             //update and draw particles
@@ -327,56 +401,16 @@ export class GreenHydrogenIndonesiaPotential extends Component {
     render() {
         return (
             <>
-                {/*  Fluid Section One */}
-                <div className='position-absolute w-100'>
-                    <div className='container-width p-0 text-center text-lg-end'>
-                        <canvas id="canvasOne" width={800} height={800}></canvas>
-                    </div>
-                </div>
-                <section className="fluid-section-one" style={{ background: `url(${BackgroundMainBanner}) no-repeat`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
-                    <div className='container-width h-100'>
-                        <div className="outer-box clearfix">
-                            {/*  Content Column */}
-                            <div className="content-column">
-                                <div className="inner-column">
-                                    <div className='text-center text-lg-start'>
-                                        <p className='fw-bold primary-color text-center text-lg-start text-size-8 text-size-lg-10'>INDONESIA</p>
-                                        <p className='fw-bold primary-color text-center text-lg-start text-size-8 text-size-lg-10'>GREEN HYDROGEN</p>
-                                        <p className='fw-bold text-center text-lg-start text-size-20 text-size-lg-25'>POTENTIAL</p>
-                                        <p className='text-center text-lg-start'>The main hydrogen production processes can be classified into electrolysis, photolysis, and thermolysis.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            {/*  Content Column */}
-                            <div className="content-column d-none d-lg-flex">
-                                <div className="inner-column">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                {/* End Fluid Section One */}
+                {this.state.htmlContent}
 
                 <div className='container-article container-width'>
                     <Sidebar />
-                    <div>
-                        <section className='container-article-section'>
-                            <p className='text-black'>Currently, in the green hydrogen sector, the Indonesian government needs a supply of economic financing from investors. The hydrogen price itself is still not stable; the price is still moving. The Green hydrogen price range is between 2-6 dollars/kg.
-                                <br /><br />
-                                In Indonesia, almost all major sectors are trying to manage this green hydrogen, but all of them are still being developed with no significant results. Most industries in Indonesia make fuel cells the heart of hydrogen itself. Unfortunately, there has been no specific regulation regarding green hydrogen in Indonesia. In general, if the nuclear energy sector has been developed in Indonesia, producing Green Hydrogen will be enormous in the future.</p>
-                        </section>
-
-                        <section className='container-article-section'>
-                            <div className='banner-container-image landscape'>
-                                <img src={IconBanner1} alt="" />
-                            </div>
-                        </section>
+                    <div className='col-12 col-lg ps-lg-3'>
+                        {this.state.htmlContentArticle}
                     </div>
                 </div>
 
                 <LatestNews />
-
-                <Sponsor />
             </>
         )
     }

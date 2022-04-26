@@ -7,11 +7,11 @@ import WOW from 'wow.js';
 /* eslint-enable  */ /* jshint ignore:end   */ /* ignore jslint end   */
 
 //Hide Loading Box (Preloader)
-function handlePreloader() {
-	if ($('.preloader').length) {
-		$('.preloader').delay(200).fadeOut(500);
-	}
-}
+// function handlePreloader() {
+// 	if ($('.preloader').length) {
+// 		$('.preloader').delay(200).fadeOut(500);
+// 	}
+// }
 
 //Update Header Style and Scroll to Top
 function headerStyle() {
@@ -32,10 +32,10 @@ function headerStyle() {
 headerStyle();
 
 //Submenu Dropdown Toggle
-if ($('.main-header li.dropdown ul').length) {
-	$('.main-header .navigation li.dropdown').append('<div class="dropdown-btn"><span class="fa fa-angle-down"></span></div>');
+// if ($('.main-header li.dropdown ul').length) {
+// 	$('.main-header .navigation li.dropdown').append('<div class="dropdown-btn"><span class="fa fa-angle-down"></span></div>');
 
-}
+// }
 
 //Mobile Nav Hide Show
 /* if ($('.mobile-menu').length) {
@@ -378,7 +378,6 @@ $(window).on('scroll', function () {
    ========================================================================== */
 
 $(window).on('load', function () {
-	handlePreloader();
 	enableMasonry();
 });	
 /* eslint-enable  */ /* jshint ignore:end   */ /* ignore jslint end   */

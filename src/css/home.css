@@ -19,7 +19,13 @@
     left: 0;
     position: absolute;
     top: 0;
+    transition: 0.4s ease-in-out;
     width: 60%;
+}
+
+.button-involved:hover:before {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    width: 100%;
 }
 
 .button-involved>.container {
@@ -49,7 +55,13 @@
     left: 0;
     position: absolute;
     top: 0;
+    transition: 0.4s ease-in-out;
     width: 60%;
+}
+
+.button-our-activity:hover:before {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    width: 100%;
 }
 
 .button-our-activity>.container {
@@ -102,6 +114,12 @@
     background-color: #6EC624;
     border-color: #6EC624;
     color: #ffffff;
+}
+
+@media only screen and (max-width: 1279px) {
+    .social-media {
+        left: 20px;
+    }
 }
 
 @media only screen and (max-width: 1023px) {

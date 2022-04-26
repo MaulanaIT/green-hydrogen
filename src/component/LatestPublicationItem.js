@@ -4,23 +4,26 @@ import { Link } from 'react-router-dom'
 import { FaLongArrowAltRight } from 'react-icons/fa';
 
 import BackgroundLatestPublication from '../assets/home/background-item-latest-publication.png';
+import { Translate } from './helper';
 
 export class LatestPublicationItem extends Component {
     render() {
         return (
-            <div className='col-12 col-lg-6 wow fadeIn'>
+            <div className='col-12 col-sm-auto wow fadeInUp' data-wow-delay="0.4s" style={{ maxWidth: 230 }}>
                 <div className='publication-card'>
-                    <div className='d-flex'>
-                        <div className='align-items-center col-5 d-flex justify-content-center'>
-                            <img src={BackgroundLatestPublication} alt="" className='w-100' />
+                    <div className='primary-background-color container-image justify-content-start' style={{ borderRadius: 8, height: 250 }}>
+                        <img src={this.props.image} alt="" style={{ minWidth: '90%', maxWidth: '90%' }} />
+                    </div>
+                    <div className='p-2'>
+                        <div className='mb-2 d-flex gap-3'>
+                            <p className='text-black text-size-0 text-size-lg-1'>{this.props.date}</p>
+                            <p className='text-black text-size-0 text-size-lg-1'>{this.props.category}</p>
                         </div>
-                        <div className='col-7 d-flex flex-column justify-content-center ps-2 px-lg-3'>
-                            <p className='fw-bold text-black text-size-6 text-size-lg-8'>Hydrogen Renewable Energy</p>
-                            <p className='text-black'>Contrary to popular belief, Lorem Ipsum 45 BC,
-                                making it over 2000 years old. Richard McClintock
-                            </p>
-                            <p className='pb-2 pt-4 text-black'>#Hydrogen #Global</p>
-                            <Link to={'/'} className='fw-bold text-decoration-none text-black text-size-4 text-size-lg-5'>Read More <FaLongArrowAltRight /></Link>
+                        <p className='fw-bold text-black text-clamp text-size-2 text-size-lg-3' style={{ "--line-clamp": 2 }}>{this.props.title}</p>
+                        <p className='text-black text-clamp text-size-0 text-size-lg-1'>{this.props.description}</p>
+                        {/* <p className='mt-auto text-black'>#Hydrogen #Global</p> */}
+                        <div className='d-flex justify-content-end'>
+                            <a href={this.props.documents} target='_blank' rel='noopener noreferrer' className='read-more text-size-0 text-size-lg-1'><Translate title={`Read More`} /> <FaLongArrowAltRight /></a>
                         </div>
                     </div>
                 </div>

@@ -1,54 +1,188 @@
-import React from 'react';
+import React, { Component } from 'react'
+import { FaSearch } from 'react-icons/fa';
 
-import BackgroundMainBanner from '../assets/company-directories/background-main-banner.png';
+import LatestNews from '../component/LatestNews';
 
-import Sponsor1 from '../assets/sponsor-1.png';
-import Sponsor2 from '../assets/sponsor-2.png';
-import Sponsor3 from '../assets/sponsor-3.png';
+import { ConfigAPI, StorageURL, Translate } from '../component/helper';
 
-export default function OurPartners() {
-    return (
-        <>
-            <div className='fluid-section-two' style={{ background: `url(${BackgroundMainBanner}) no-repeat`, backgroundSize: 'cover' }}>
-                <div className='align-items-center container-width d-flex flex-column justify-content-center h-100'>
-                    <p className='fw-bold mt-lg-5 text-center text-size-20 text-size-lg-25'>ABOUT US</p>
-                    <p className='text-center text-size-5 text-size-lg-8'>About Us | Our Partner</p>
-                </div>
-            </div>
+import i18next from 'i18next';
+import axios from 'axios';
 
-            <section className='container container-width pt-5'>
-                <div className='d-flex flex-lg-row flex-column-reverse flex-wrap'>
-                    <div className='col-12 col-lg-6 pb-4 pe-lg-3'>
-                        <div className='our-partner-logo text-center'>
-                            <img src={Sponsor1} alt="" className='h-100' />
-                        </div>
-                        <p className='fw-bold py-4 primary-color text-size-8 text-size-lg-10'>The Deutsche Gesellschaft für Internationale Zusammenarbeit  (GIZ)</p>
-                        <p className='text-black text-justify'>The Deutsche Gesellschaft für Internationale Zusammenarbeit (GIZ) GmbH (English: German Corporation for International Cooperation GmbH), often shortened to simply GIZ, is a German development agency headquartered in Bonn and Eschborn that provides services in the field of international development cooperation and international education work. GIZ's main commissioning party is Germany's Federal Ministry for Economic Cooperation and Development (BMZ). GIZ is dedicated to building a future worth living around the world.</p>
-                        <div className='our-partner-logo text-center mt-4'>
-                            <img src={Sponsor2} alt="" className='h-100' />
-                        </div>
-                    </div>
-                    <div className='col-12 col-lg-6 pb-4 ps-lg-3'>
-                        <div className='our-partner-logo text-center'>
-                            <img src={Sponsor3} alt="" className='h-100' />
-                        </div>
-                        <p className='fw-bold py-4 primary-color text-size-8 text-size-lg-10'>Business Scouts for Development</p>
-                        <p className='text-black text-justify'>Business Scouts for Development work as development policy experts in around 40 countries across the globe. On behalf of the German Federal Ministry for Economic Development and Cooperation (BMZ), they advise German, European and local companies on development policy matters and promote responsible business engagement through cooperation projects. They are development policy ex-perts who advise German, European and local companies on the opportunities for promotion, financing and cooperation available through German and European development cooperation, facilitate networking with potential partners and initiate cooperation projects. In addition, by supporting business and learning partnerships, the transfer of expertise and targeted support for trade fair participation they not only generate new opportunities for trade but also improve prospects for local job creation.</p>
-                    </div>
-                </div>
-            </section>
+export class OurPartners extends Component {
 
-            <section className='container container-article-section container-width mb-2'>
-                <p className='fw-bold primary-color text-size-8 text-size-lg-10'>The German-Indonesian Chamber of Commerce and Industry (AHK Indonesien / EKONID)</p>
-            </section>
+    state = {
+        data: [],
 
-            <section className='container container-article-section container-width'>
-                <p className='text-black text-justify'>The German-Indonesian Chamber of Commerce and Industry (AHK Indonesien / EKONID) acts as a strategic interface between the German and Indonesian economies. We represent the mutual interest in business relationships of German and Indonesian companies, organizations and institutions. Our main activity is to support companies from both nations in exploring new areas of investment and establishing business relationships. We are a meeting point, information center and first point of contact for companies interested in doing business in and with Indonesia.
-                    <br /><br />
-                    EKONID offers a variety of services under the DEinternational brand - from general market information to services specially tailored to the respective company for a successful market entry, e.g. business partner search, support in legal questions and participation in trade fairs.
-                    <br /><br />
-                    In addition to its main location in Jakarta, the chamber of commerce is represented in Surabaya by an office, the so-called Wisma Jerman - a cooperation between the Goethe-Institute and EKONID, which is supported by the German Embassy Jakarta. Wisma Jerman offers language courses, events and the services from the EKONID service portfolio.</p>
-            </section>
-        </>
-    );
+        htmlContent: [],
+        htmlContentPartner: []
+    }
+
+    componentDidMount() {
+        axios.get(`https://admin.greenhydrogen.my.id/api/content/${i18next.language}/menu/${i18next.language == 'id' ? 41 : 42}`, ConfigAPI()).then(response => {
+            let data = response.data;
+
+            let htmlContent = [];
+            let htmlContentPartner = [];
+
+            if (data) {
+                data.map((item, index) => {
+                    if (item.order == '0') {
+                        htmlContent.push(
+                            <div key={index} className='fluid-section-two position-relative' style={{ background: `url(${StorageURL(item?.content?.background_ourpartner_picture_1)}) no-repeat`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
+                                <div className='align-items-lg-start align-items-center container-width d-flex flex-column justify-content-center h-100 px-20'>
+                                    <p className='fw-bold text-center text-size-6 text-size-lg-8'>{item?.content?.left_title_1}</p>
+                                    <p className='text-center text-size-3 text-size-lg-4'>{item?.content?.left_description_1}</p>
+                                    <div className='main-search'>
+                                        <div className='icon-input-field-search' >
+                                            <FaSearch />
+                                        </div>
+                                        <input type="text" name='input-search' id='input-search' className='py-2 text-white' placeholder='Search' onChange={this.Filter} />
+                                    </div>
+                                </div>
+                            </div>
+                        );
+                    } else if (item.order == '1') {
+                        htmlContentPartner.push(
+                            <div key={index} className='py-5'>
+                                <div className='align-items-start container-width d-flex justify-content-between px-20'>
+                                    <div className='col-12 col-lg-4 me-lg-5'>
+                                        <img src={StorageURL(item?.content?.left_picture_1)} alt="" className='w-100' />
+                                    </div>
+                                    <div className='col-12 col-lg-7'>
+                                        <p className='fw-bold mb-2 text-black text-size-5 text-size-lg-6'>{item?.content?.right_title_1}</p>
+                                        <p className='text-justify text-black text-size-2 text-size-lg-3'>{item?.content?.right_description_1}</p>
+                                        <div className='cursor-pointer d-flex justify-content-start mt-3' onClick={() => this.ReadMore(item?.content?.right_button_link_1)}>
+                                            <div className='button-read-story'><Translate title={`Read More`} /></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        );
+                    } else if (item.order == '2') {
+                        htmlContentPartner.push(
+                            <div key={index} className='py-5'>
+                                <div className='align-items-start container-width d-flex justify-content-between px-20'>
+                                    <div className='col-12 col-lg-4 me-lg-5'>
+                                        <img src={StorageURL(item?.content?.left_picture_1)} alt="" className='w-100' />
+                                    </div>
+                                    <div className='col-12 col-lg-7'>
+                                        <p className='fw-bold mb-2 text-black text-size-5 text-size-lg-6'>{item?.content?.right_title_1}</p>
+                                        <p className='fw-bold mb-2 text-black text-size-5 text-size-lg-6'>{item?.content?.right_title_2}</p>
+                                        <p className='text-black text-justify text-size-2 text-size-lg-3'>{item?.content?.right_description_1}</p>
+                                        <div className='cursor-pointer d-flex justify-content-start mt-3' onClick={() => this.ReadMore(item?.content?.right_button_link_1)}>
+                                            <div className='button-read-story'><Translate title={`Read More`} /></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        )
+                    } else if (item.order == '3') {
+                        htmlContentPartner.push(
+                            <div key={index} className='py-5'>
+                                <div className='align-items-start container-width d-flex justify-content-between px-20'>
+                                    <div className='col-12 col-lg-4 me-lg-5'>
+                                        <img src={StorageURL(item?.content?.left_picture_1)} alt="" className='w-100' />
+                                    </div>
+                                    <div className='col-12 col-lg-7'>
+                                        <p className='fw-bold mb-2 text-black text-size-5 text-size-lg-6'>{item?.content?.right_title_1}</p>
+                                        <p className='text-black text-justify text-size-2 text-size-lg-3'>{item?.content?.right_description_1}</p>
+                                        <div className='cursor-pointer d-flex justify-content-start mt-3' onClick={() => this.ReadMore(item?.content?.right_button_link_1)}>
+                                            <div className='button-read-story'><Translate title={`Read More`} /></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        )
+                    }
+                });
+            }
+
+            this.setState({ data: data, htmlContent: htmlContent, htmlContentPartner: htmlContentPartner });
+        });
+    }
+    Filter = (event) => {
+        let data = this.state.data;
+
+        let htmlContentPartner = [];
+
+        if (data) {
+            data.map((item, index) => {
+                if (item?.content?.right_title_1?.includes(event.target.value) ||
+                    item?.content?.right_title_2?.includes(event.target.value) ||
+                    item?.content?.right_description_1?.includes(event.target.value))
+                    if (item.order == '1') {
+                        htmlContentPartner.push(
+                            <div key={index} className='py-5'>
+                                <div className='align-items-start container-width d-flex justify-content-between px-20'>
+                                    <div className='col-12 col-lg-4 me-lg-5'>
+                                        <img src={StorageURL(item?.content?.left_picture_1)} alt="" className='w-100' />
+                                    </div>
+                                    <div className='col-12 col-lg-7'>
+                                        <p className='fw-bold mb-2 text-black text-size-5 text-size-lg-6'>{item?.content?.right_title_1}</p>
+                                        <p className='text-justify text-black text-clamp text-size-2 text-size-lg-3'>{item?.content?.right_description_1}</p>
+                                        <div className='cursor-pointer d-flex justify-content-start mt-3' onClick={() => this.ReadMore(item?.content?.right_button_link_1)}>
+                                            <div className='button-read-story'><Translate title={`Read More`} /></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        );
+                    } else if (item.order == '2') {
+                        htmlContentPartner.push(
+                            <div key={index} className='py-5'>
+                                <div className='align-items-start container-width d-flex justify-content-between px-20'>
+                                    <div className='col-12 col-lg-4 me-lg-5'>
+                                        <img src={StorageURL(item?.content?.left_picture_1)} alt="" className='w-100' />
+                                    </div>
+                                    <div className='col-12 col-lg-7'>
+                                        <p className='fw-bold mb-2 text-black text-size-5 text-size-lg-6'>{item?.content?.right_title_1}</p>
+                                        <p className='fw-bold mb-2 text-black text-size-5 text-size-lg-6'>{item?.content?.right_title_2}</p>
+                                        <p className='text-black text-clamp text-justify text-size-2 text-size-lg-3'>{item?.content?.right_description_1}</p>
+                                        <div className='cursor-pointer d-flex justify-content-start mt-3' onClick={() => this.ReadMore(item?.content?.right_button_link_1)}>
+                                            <div className='button-read-story'><Translate title={`Read More`} /></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        )
+                    } else if (item.order == '3') {
+                        htmlContentPartner.push(
+                            <div key={index} className='py-5'>
+                                <div className='align-items-start container-width d-flex justify-content-between px-20'>
+                                    <div className='col-12 col-lg-4 me-lg-5'>
+                                        <img src={StorageURL(item?.content?.left_picture_1)} alt="" className='w-100' />
+                                    </div>
+                                    <div className='col-12 col-lg-7'>
+                                        <p className='fw-bold mb-2 text-black text-size-5 text-size-lg-6'>{item?.content?.right_title_1}</p>
+                                        <p className='text-black text-clamp text-justify text-size-2 text-size-lg-3'>{item?.content?.right_description_1}</p>
+                                        <div className='cursor-pointer d-flex justify-content-start mt-3' onClick={() => this.ReadMore(item?.content?.right_button_link_1)}>
+                                            <div className='button-read-story'><Translate title={`Read More`} /></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        )
+                    }
+            });
+        }
+
+        this.setState({ htmlContentPartner: htmlContentPartner });
+    }
+
+    ReadMore = (link) => {
+        window.open(link, "_blank");
+    }
+
+    render() {
+        return (
+            <>
+                {this.state.htmlContent}
+                {this.state.htmlContentPartner}
+
+                <LatestNews />
+            </>
+        )
+    }
 }
+
+export default OurPartners

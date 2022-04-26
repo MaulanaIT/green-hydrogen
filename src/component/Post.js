@@ -3,18 +3,22 @@ import { FaRegCalendar, FaUserCircle } from 'react-icons/fa';
 
 import ImageNews from '../assets/news/image-news.jpg';
 
+import moment from 'moment';
+import { Link } from 'react-router-dom';
+
 export class Post extends Component {
+
     render() {
         return (
-            <div className='bg-light mb-2 mb-lg-4' style={{borderRadius: '12px'}}>
-                <div className='news-image'>
-                    <img src={ImageNews} alt="" className='w-100' />
+            <div className='bg-light mb-2 mb-lg-4 wow fadeInUp' data-wow-delay="0.4s" style={{borderRadius: '12px'}}>
+                <div className='container-image news-image' data-category={this.props.category} style={{height: 384}} >
+                    <img src={this.props.image} alt="" />
                 </div>
                 <div className='p-3'>
-                    <p className='align-items-center d-flex py-2 text-black text-size-3 text-size-lg-3'><FaRegCalendar className='me-2' /> Juni 20, 2022</p>
-                    <p className='fw-bold text-black text-size-6 text-size-lg-8'>Association calls grant "insulting", urges industry to write to Mps</p>
-                    <p className='py-2 text-size-2 text-size-lg-3 text-secondary'>The Meetings Industry Association (mia) is urging its members to write to their local MPs to express concerns that the business meetings and events sector has been forgotten in chancellor Rishi Sunak’s latest round of support.</p>
-                    <p className='align-items-center d-flex py-2 text-black text-size-2 text-size-lg-3'><FaUserCircle className='text-size-10 text-size-lg-10 me-2' /> Admin Natalia</p>
+                    <p className='align-items-center d-flex py-2 text-black text-size-3 text-size-lg-3'><FaRegCalendar className='me-2' /> {moment(this.props.date).format('MMMM DD, YYYY')}</p>
+                    <Link to={`/news-event/news/detail`} state={{data: this.props.detail}} className='fw-bold hover-text-button text-clamp text-size-6 text-size-lg-8'>{this.props.title}</Link>
+                    <p className='my-2 text-clamp text-secondary' dangerouslySetInnerHTML={{__html: this.props.description.replaceAll('p><p', 'p><br/><p')}}></p>
+                    <p className='align-items-center d-flex hover-text-button py-2 text-black'><FaUserCircle className='text-size-10 text-size-lg-10 me-2' /> {this.props.author}</p>
                 </div>
             </div>
         )
